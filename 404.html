@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not found | The Angels' Wing</title>
+<meta name="robots" content="noindex">
+<style>
+  body{
+    margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+    background:#282828;color:#dbdbdb;text-align:center;padding:2rem;
+    font:400 16px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  main{max-width:34rem}
+  img{width:96px;height:96px;margin:0 auto 1.5rem}
+  h1{font-size:1.4rem;font-weight:800;color:#fbfcff;margin:0 0 .8rem}
+  p{margin:0 0 1.4rem;color:#969696}
+  a.btn{
+    display:inline-block;background:#b48b3c;color:#fff;text-decoration:none;
+    padding:.72rem 1.5rem;border-radius:2px;font-size:.92rem;
+  }
+  a.btn:hover{background:#d4a94f}
+</style>
+</head>
+<body>
+<main>
+  <img id="logo" src="/assets/logo.png" alt="">
+  <h1>This page is not here</h1>
+  <p>The Angels' Wing is an archive now, and it lives on a single page. Whatever you were looking for is most likely still there.</p>
+  <p><a class="btn" id="home" href="/">Go to the archive</a></p>
+</main>
+<script>
+(function () {
+  // Auf GitHub Pages liegt das Projekt in einem Unterordner, unter der eigenen
+  // Domain in der Wurzel. Die Basis muss deshalb aus der URL abgeleitet werden.
+  var seg = location.pathname.split('/').filter(Boolean);
+  var base = /\.github\.io$/.test(location.hostname) && seg.length ? '/' + seg[0] + '/' : '/';
+  var rest = location.pathname.slice(base.length).replace(/^\/+|\/+$/g, '');
+
+  var SECTIONS = {
+    'about': 'story',
+    'artists': 'artists',
+    'the-artists': 'artists',
+    'gallery': 'gallery',
+    'gallery-map': 'gallery',
+    'nft-art-podcast': 'podcast',
+    'ping': 'credits'
+  };
+
+  var anchor = '';
+  var m = rest.match(/^artists\/([^\/]+)$/);
+  if (m) anchor = '#artist-' + m[1];
+  else if (SECTIONS[rest]) anchor = '#' + SECTIONS[rest];
+
+  document.getElementById('logo').src = base + 'assets/logo.png';
+  var target = base + anchor;
+  document.getElementById('home').href = target;
+  if (anchor) location.replace(target);
+})();
+</script>
+</body>
+</html>

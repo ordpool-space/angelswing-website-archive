@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NFT derivatives | The Angels' Wing</title>
+<meta name="description" content="If you do not want to or cannot buy a whole share in the financial world, certain brokers also offer fractional shares. Are fractional shares also…">
+<link rel="icon" href="../../assets/logo.png">
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(../../assets/fonts/montserrat-800-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(../../assets/fonts/montserrat-800-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(../../assets/fonts/roboto-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(../../assets/fonts/roboto-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(../../assets/fonts/roboto-500-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(../../assets/fonts/roboto-500-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+:root{
+  --bg:#282828;
+  --panel:#1e1f20;
+  --panel-2:#232425;
+  --text:#dbdbdb;
+  --muted:#969696;
+  --gold:#b48b3c;
+  --gold-hi:#d4a94f;
+  --white:#fbfcff;
+  --line:#3a3b3d;
+  --head:'Montserrat',system-ui,sans-serif;
+  --body:'Roboto',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font:400 17px/1.75 var(--body);-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--gold-hi);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{font-family:var(--head);font-weight:800;color:var(--white);line-height:1.2;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 1.5rem}
+
+.strip{
+  background:var(--gold);color:#231a09;font-size:.82rem;font-weight:500;
+  text-align:center;padding:.55rem 1rem;
+}
+header{
+  position:sticky;top:0;z-index:50;background:rgba(30,31,32,.94);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+}
+.bar{display:flex;align-items:center;gap:1.5rem;padding:.35rem 1.5rem;max-width:1180px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:.7rem;margin-right:auto}
+header{overflow:visible}
+.brand img{
+  width:104px;height:104px;
+  position:relative;z-index:3;
+  margin:-8px 0 -34px;
+}
+.brand span{font-family:var(--head);font-weight:800;font-size:.92rem;color:var(--white)}
+.brand:hover{text-decoration:none}
+nav{display:flex;gap:1.5rem;align-items:center}
+nav a{color:var(--text);font-size:.9rem}
+nav a:hover{color:var(--gold-hi);text-decoration:none}
+.btn{
+  display:inline-block;background:var(--gold);color:#fff;font-weight:500;
+  padding:.65rem 1.3rem;border-radius:2px;font-size:.88rem;white-space:nowrap;
+}
+.btn:hover{background:var(--gold-hi);text-decoration:none;color:#fff}
+
+/* ---------- Artikel ---------- */
+.article{padding:3.5rem 1.5rem 4.5rem;max-width:820px}
+.kicker{margin:0 0 1rem;font-family:var(--head);font-weight:800;
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase}
+.kicker a{color:var(--gold)}
+.article h1{font-size:clamp(2rem,5vw,3rem);margin-bottom:2rem}
+
+.prose h2{font-size:1.6rem;margin:2.8rem 0 1rem}
+.prose h3{font-size:1.25rem;margin:2.2rem 0 .8rem}
+.prose h4{font-size:1.08rem;margin:2rem 0 .7rem;color:var(--gold-hi)}
+.prose p{margin:0 0 1.3rem}
+.prose ul,.prose ol{margin:0 0 1.4rem;padding-left:1.3rem}
+.prose li{margin-bottom:.5rem}
+.prose strong{color:var(--white)}
+.prose em{color:var(--muted)}
+.prose figure{margin:2rem 0}
+/* Viele Screenshots sind Hochformat und wuerden in der Textspalte ueber einen
+   ganzen Bildschirm hoch. Deshalb ueber die HOEHE begrenzen, nicht die Breite:
+   breite Aufnahmen bleiben voll, hohe schrumpfen und stehen mittig. */
+.prose img{
+  border:1px solid var(--line);background:#111;
+  max-height:min(62vh,540px);width:auto;max-width:100%;
+  margin-inline:auto;
+}
+.prose figcaption{font-size:.83rem;color:var(--muted);margin-top:.6rem;line-height:1.5}
+.prose blockquote{
+  margin:2rem 0;padding:.2rem 0 .2rem 1.4rem;
+  border-left:3px solid var(--gold);color:var(--muted);
+}
+.prose table{width:100%;border-collapse:collapse;margin:1.8rem 0;font-size:.92rem}
+.prose th,.prose td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.prose th{background:var(--panel);color:var(--white);font-family:var(--head);font-weight:800}
+.prose code{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;
+  background:rgba(255,255,255,.06);padding:.15em .4em;border-radius:3px;
+}
+.prose hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
+.intro-prose{font-size:1.05rem}
+
+/* ---------- vor / zurueck ---------- */
+.pagenav{display:grid;gap:1rem;grid-template-columns:1fr 1fr;margin-top:4rem}
+.pn{
+  border:1px solid var(--line);padding:1rem 1.2rem;color:var(--text);
+  font-family:var(--head);font-weight:800;font-size:.95rem;line-height:1.35;
+}
+.pn:hover{border-color:var(--gold);color:var(--gold-hi);text-decoration:none}
+.pn span{
+  display:block;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.35rem;font-weight:800;
+}
+.pn.next{text-align:right;grid-column:2}
+.pn.prev{grid-column:1}
+
+/* ---------- Uebersicht ---------- */
+.guides{display:grid;gap:1.2rem;margin-top:2.5rem}
+.guide{
+  display:block;border:1px solid var(--line);background:var(--panel-2);
+  padding:1.5rem 1.6rem;color:var(--text);
+}
+.guide:hover{border-color:var(--gold);text-decoration:none}
+.guide h2{font-size:1.3rem;margin-bottom:.5rem}
+.guide:hover h2{color:var(--gold-hi)}
+.guide p{margin:0;font-size:.95rem;color:var(--muted)}
+
+/* ---------- Fuss ---------- */
+footer{background:var(--panel);border-top:1px solid var(--line);padding:3rem 0;font-size:.88rem}
+.foot{display:flex;gap:2rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.social{display:flex;gap:1.5rem}
+.social a{color:var(--text)}
+.copy{color:var(--muted);max-width:52ch}
+
+@media (max-width:860px){ nav{display:none} }
+@media (max-width:640px){
+  body{font-size:16px}
+  .article{padding:2.5rem 1.25rem 3.5rem}
+  .brand span{display:none}
+  .brand img{width:68px;height:68px;margin:-4px 0 -20px}
+  .pagenav{grid-template-columns:1fr}
+  .pn.next,.pn.prev{grid-column:1;text-align:left}
+}
+
+.more-head{font-size:1.35rem;margin:4rem 0 0}
+
+.langswitch{margin:-1rem 0 2rem;font-size:.86rem}
+.langswitch a{color:var(--gold)}
+
+/* Autorenkasten: kleines rundes Bild statt bildschirmfuellender Kachel */
+.author-pic{margin:1.4rem 0 .9rem}
+.author-pic img{
+  width:88px;height:88px;max-height:none;
+  border-radius:50%;object-fit:cover;
+  border:1px solid var(--line);
+  margin-inline:0;
+}
+
+</style>
+</head>
+<body>
+<div class="strip">
+  Written in 2021 and 2022, when NFTs were new. Unchanged since.
+</div>
+<header>
+  <div class="bar">
+    <a class="brand" href="../../">
+      <img src="../../assets/logo.png" alt="The Angels' Wing">
+      <span>The Angels' Wing</span>
+    </a>
+    <nav>
+      <a href="../../#podcast">Podcast</a>
+      <a href="../../#artists">The Artists</a>
+      <a href="../../#gallery">Gallery</a>
+      <a href="../../#story">The Story</a>
+      <a href="../../nft-buy/">Guides</a>
+    </nav>
+    <a class="btn" href="https://oncyber.io/casperb_collab" target="_blank" rel="noopener noreferrer">Enter Gallery</a>
+  </div>
+</header>
+<main class="wrap article">
+<p class="kicker"><a href="../">Buy NFTs &ndash; the complete guide</a></p>
+<h1>NFT derivatives</h1>
+<p class="langswitch"><a href="../../nft-kaufen/nft-derivate/">Auf Deutsch lesen</a></p>
+<div class="prose">
+<p>If you do not want to or cannot buy a whole share in the financial world, certain brokers also offer fractional shares.<br/><strong>Are fractional shares also available for non-fungible tokens (NFT)?</strong></p><p>In the financial world, if you bet on rising prices, you buy the corresponding asset. This can then be sold later at a profit. The opposite is equally possible. Betting on falling prices is called short selling. In simple terms, one borrows assets and sells them in the hope of being able to buy them back at a lower price before the return date (margin trading). If you borrow more assets than you actually have available as capital, this is called a leverage trade. Possible profits and losses are multiplied accordingly.<br/><strong>Are short positions also available for Non-Fungible Tokens (NFT)?</strong></p><p><strong>The details from this article complement the main article: → <a href="../">Buy NFT</a></strong></p><p>In this article, therefore, we want to look at&#8230;</p><ol><li>How to acquire shares in a high-priced NFT with little capital investment.</li><li>How to bet on falling prices on an NFT.</li></ol><h2>Fractionated NFT</h2><figure><img loading="lazy" decoding="async" src="../../assets/media/2021-10-fractional-nft-1024x499.jpg" alt="" /><figcaption><em>A Crypto Punk is cut into pieces</em></figcaption></figure><p>Only few people have the capital necessary to invest in a famous NFT project like the Crypto Punks or the Bored Apes. And even if the necessary capital could be raised: Every portfolio should be diversified. An extremely high-priced NFT stands in the way of that. So how is it possible to participate on the growth of value? You need a fraction of something that is actually indivisible. However, it is technically impossible to split an NFT. But of course, the crypto world has long since found a way around indivisibility: <strong>fractional NFT (F-NFT)</strong>.</p><h3>Token from Fractional</h3><p>This service is offered among others by <a href="https://web.archive.org/web/20230926102140/https://fractional.art/" target="_blank" rel="noopener noreferrer"><strong>fractional.art</strong></a> . The owner of an NFT can lock his non-fungible ERC-721 token in the protocol and have any number of fungible ERC-20 tokens generated in exchange. The owner can now deposit these fractions as collateral for a loan, among other things. He can also offer all or part of the tokens on decentralized exchanges such as UniSwap or SushiSwap. Anyone can now purchase the desired number of tokens through the exchanges. Fractionating an NFT allows for more flexible pricing and solves the liquidity problems associated with NFTs. If you want to buy or sell a high-priced unique item, you always have to wait some time until a trading partner is found. With Automated Market Makers (AMM) such as UniSwap or SushiSwap, on the other hand, a swap is possible at any time. You&#8217;ll find an overview of many high-priced, fractional NFTs <a href="https://web.archive.org/web/20230324055759/https://dappradar.com/nft/fractionalized" target="_blank" rel="noopener noreferrer">in this list</a>. At this point, we don&#8217;t want to give investment advice, but many NFT investors would say that the price of Crypto Punks has only known one direction in the long run so far&#8230;.</p><h3>Token from NFTX</h3><p>However, fractionation is not limited to individual NFTs. Fractional also offers the possibility to fractionate a group of NFT together. However, individual NFTs cannot be added later, nor can individual NFTs be removed from the group later. This is where the service of <a href="https://nftx.io/" target="_blank" rel="noopener noreferrer"><strong>nftx.io</strong></a> offers a kind of &#8220;NFT fund&#8221;. At the heart of NFTX are the &#8220;vaults&#8221; where you can lock up NFTs and get a fungible &#8220;vToken&#8221; in exchange for each NFT. A vault can accept all NFT of a collection (e.g. all punks) or only a selection from a collection (e.g. all female punks). It&#8217;s important to know that you can redeem a specific NFT at any time with a matching vToken + fee. For example, if you have a not very rare/cheaper NFT in your portfolio and you discover a rarer/higher priced NFT in the vault, you can exchange them for each other, taking into account a fee. The vTokens are in turn tradable on SushiSwap for ETH. The NFTX interface simplifies the intermediate step via the stock exchange. The whole &#8220;trade my ETH for a locked NFT&#8221; operation is shown as a single buy operation. The opposite &#8220;locking up my NFT for ETH&#8221; is presented as selling. The ability to put in &amp; take out NFT, as well as the price determination on the SushiSwap exchange, brings the price per NFT helps determine the <strong>&#8220;floor price&#8221;</strong> better than on OpenSea. This also means that over time the market has determined all NFTs in the vault to be the most favorable NFTs available in a collection. You can find an overview with all issued vTokens in <a href="https://web.archive.org/web/20240523190554/https://nftx.io/coins/" target="_blank" rel="noopener noreferrer">this list</a>.</p><p><strong>Example:</strong> We own an NFT from a premium collection and believe the floor price will correct soon. We therefore want to sell it in time, and initially post the NFT on OpenSea at the price we had hoped for. There is no buyer there willing to pay our price. Now we can check the price at NFTX. If there is a suitable pool and the price corresponds to our own expectations, we lock the NFT in it. We then sell the minted vTokens on Sushiswap. This lowers the price of the other vTokens and appropriate pricing towards the floor price is facilitated. On the other hand, if we believe that the floor price will rise soon, we invest in the corresponding vToken. We can now either hold that vToken directly or use an entire vToken (plus the extra fee, usually 5%, for a total of 1.05 vTokens) to redeem an NFT and sell it on OpenSea.</p><h3>Is there margin trading on fractional NFT?</h3><p>If the liquidity is high enough &#8211; and the respective crypto exchange offers the feature &#8211; then coins and fungible tokens can be easily traded on crypto exchanges as margin trades with and without leverage. Well known exchanges that support this are Binance, FTX, Bitfinex, Kraken, KuCoin and many more. With non-fungible tokens this does not work in principle. Liquidity (quantity 1) prevents any form of long or short position by another party. Forward contracts for individual NFTs cannot be formed either, the price is far too stable for that. Pricing always occurs only through an actual sale, with sales rarely if ever taking place.</p><p>To the best of our knowledge, there is currently no market in which one can execute margin trading with fractional NFTs. However, this is only a matter of time before a corresponding trading venue opens up on one of the decentralized exchanges such as Perpetual Protocol, dYdX, Fulcrum or one of the other competitors. <em>Feel free to email us at t|e|a|m|@|h|a|u|s|h|o|p|p|e|.|d|e| if you know of an appropriate marketplace.</em></p><h2>Floor Price markets</h2><p>Nevertheless, is there a current opportunity to bet on falling prices? Yes, there is. It is possible to place bets on <a href="https://polymarket.com/" target="_blank" rel="noopener noreferrer"><strong>Polymarket</strong></a> for floor prices. Polymarket is an information market platform on the Ethereum-compatible sidechain <strong>Polygon</strong>, where you can trade the most discussed topics (e.g. coronavirus, politics, current events, etc.). The principle is always the same: a question is asked which can be answered with &#8220;yes&#8221; or &#8220;no&#8221;. At the beginning, the &#8220;Yes&#8221; and the &#8220;No&#8221; shares are each at $0.50. If more market participants are of the opinion that the final answer to the question is &#8220;yes&#8221;, the more &#8220;yes&#8221; shares they acquire. The price for a &#8220;yes&#8221; share rises accordingly. The price for a &#8220;no&#8221; vote decreases accordingly. The lower the price of a share, the higher the expected profit. This creates an incentive to bet against the majority opinion. Once the final answer to the question is known, the market dissolves. The correct shares are then worth $1.00, while the incorrect shares have no value. If you own shares with the right result, you can exchange them back for the stablecoin USDC.</p><figure><img loading="lazy" decoding="async" src="../../assets/media/2021-10-Screen-Shot-2021-10-25-at-21.25.21-1024x710.jpg" alt="" /><figcaption>A bet on the floor price of the Crypto Punks. According to the screenshot, a slim majority of 53% of participants believe that the price will not exceed 100 ETH in less than a week. At the time, the cheapest punk was offered for 99.40 ETH (about $417,000).</figcaption></figure><h2>Conclusion</h2><p>As the popularity and market capitalization of Non-Fungible Tokens (NFT) continues to grow, the tools continue to evolve. To participate in the performance of a high priced NFT, one can bet on fractional NFT. It is also possible to invest in shares in a pool of NFTs. If you want to bet on rising or falling floor prices, you can bet on an information market.</p><p><strong>You want to know more about NFT? Continue reading the main article: → <a href="../">Buy NFT</a></strong></p>
+
+<h3>About the author</h3>
+<figure class="author-pic"><img loading="lazy" decoding="async" src="../../assets/media/johannes-metaangel.jpg" alt=""/></figure>
+<p><strong>Johannes</strong> made his first bitcoin transaction in 2013. He has been fascinated by cryptography and the cypherpunk ethos ever since. He is a cypherpunk at heart, which is why pretty much everything he builds, like <a href="https://ordpool.space" target="_blank" rel="noopener noreferrer">ordpool.space</a>, is open source and free.</p>
+</div>
+<h2 class="more-head">More in this series</h2>
+<div class="guides">
+      <a class="guide" href="../">
+        <h2>Buy NFTs - the complete guide</h2>
+        <p>The long one. Wallets, marketplaces, what a token actually is, and three different reasons people buy.</p>
+      </a>
+      <a class="guide" href="../background-knowledge-to-blockchain-token/">
+        <h2>Background knowledge on blockchain tokens</h2>
+        <p>What sits underneath: token standards, and what fungible and non-fungible really mean.</p>
+      </a>
+      <a class="guide" href="../nft-analyze-and-evaluate/">
+        <h2>Analyze and evaluate NFT</h2>
+        <p>How to look at a collection before buying into it, and which risks are worth checking.</p>
+      </a>
+      <a class="guide" href="../oncyber-galleries-and-collabs/">
+        <h2>On Cyber galleries and Collabs</h2>
+        <p>A walkthrough of the gallery software The Angels&#x27; Wing was built on, written with CasperB.</p>
+      </a>
+</div>
+</main>
+<footer>
+  <div class="wrap foot">
+    <div class="copy">
+      Copyright &copy; 2022&ndash;2023 The Angels' Wing. All rights to the artwork remain solely with the artists.<br>
+      Supported by <a href="https://haushoppe.art" target="_blank" rel="noopener noreferrer">HAUS HOPPE</a>.
+    </div>
+    <div class="social">
+      <a href="../../">The archive</a>
+      <a href="https://feed.theangelswing.art/">Podcast</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

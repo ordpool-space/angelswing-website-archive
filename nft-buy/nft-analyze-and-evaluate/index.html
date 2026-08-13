@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analyze and evaluate NFT | The Angels' Wing</title>
+<meta name="description" content="In this article we want to show different ways to analyze a Non-Fungible Token (NFT). The main aim is to identify potential risks and to be able to…">
+<link rel="icon" href="../../assets/logo.png">
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(../../assets/fonts/montserrat-800-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(../../assets/fonts/montserrat-800-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(../../assets/fonts/roboto-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(../../assets/fonts/roboto-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(../../assets/fonts/roboto-500-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(../../assets/fonts/roboto-500-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+:root{
+  --bg:#282828;
+  --panel:#1e1f20;
+  --panel-2:#232425;
+  --text:#dbdbdb;
+  --muted:#969696;
+  --gold:#b48b3c;
+  --gold-hi:#d4a94f;
+  --white:#fbfcff;
+  --line:#3a3b3d;
+  --head:'Montserrat',system-ui,sans-serif;
+  --body:'Roboto',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font:400 17px/1.75 var(--body);-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--gold-hi);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{font-family:var(--head);font-weight:800;color:var(--white);line-height:1.2;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 1.5rem}
+
+.strip{
+  background:var(--gold);color:#231a09;font-size:.82rem;font-weight:500;
+  text-align:center;padding:.55rem 1rem;
+}
+header{
+  position:sticky;top:0;z-index:50;background:rgba(30,31,32,.94);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+}
+.bar{display:flex;align-items:center;gap:1.5rem;padding:.35rem 1.5rem;max-width:1180px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:.7rem;margin-right:auto}
+header{overflow:visible}
+.brand img{
+  width:104px;height:104px;
+  position:relative;z-index:3;
+  margin:-8px 0 -34px;
+}
+.brand span{font-family:var(--head);font-weight:800;font-size:.92rem;color:var(--white)}
+.brand:hover{text-decoration:none}
+nav{display:flex;gap:1.5rem;align-items:center}
+nav a{color:var(--text);font-size:.9rem}
+nav a:hover{color:var(--gold-hi);text-decoration:none}
+.btn{
+  display:inline-block;background:var(--gold);color:#fff;font-weight:500;
+  padding:.65rem 1.3rem;border-radius:2px;font-size:.88rem;white-space:nowrap;
+}
+.btn:hover{background:var(--gold-hi);text-decoration:none;color:#fff}
+
+/* ---------- Artikel ---------- */
+.article{padding:3.5rem 1.5rem 4.5rem;max-width:820px}
+.kicker{margin:0 0 1rem;font-family:var(--head);font-weight:800;
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase}
+.kicker a{color:var(--gold)}
+.article h1{font-size:clamp(2rem,5vw,3rem);margin-bottom:2rem}
+
+.prose h2{font-size:1.6rem;margin:2.8rem 0 1rem}
+.prose h3{font-size:1.25rem;margin:2.2rem 0 .8rem}
+.prose h4{font-size:1.08rem;margin:2rem 0 .7rem;color:var(--gold-hi)}
+.prose p{margin:0 0 1.3rem}
+.prose ul,.prose ol{margin:0 0 1.4rem;padding-left:1.3rem}
+.prose li{margin-bottom:.5rem}
+.prose strong{color:var(--white)}
+.prose em{color:var(--muted)}
+.prose figure{margin:2rem 0}
+/* Viele Screenshots sind Hochformat und wuerden in der Textspalte ueber einen
+   ganzen Bildschirm hoch. Deshalb ueber die HOEHE begrenzen, nicht die Breite:
+   breite Aufnahmen bleiben voll, hohe schrumpfen und stehen mittig. */
+.prose img{
+  border:1px solid var(--line);background:#111;
+  max-height:min(62vh,540px);width:auto;max-width:100%;
+  margin-inline:auto;
+}
+.prose figcaption{font-size:.83rem;color:var(--muted);margin-top:.6rem;line-height:1.5}
+.prose blockquote{
+  margin:2rem 0;padding:.2rem 0 .2rem 1.4rem;
+  border-left:3px solid var(--gold);color:var(--muted);
+}
+.prose table{width:100%;border-collapse:collapse;margin:1.8rem 0;font-size:.92rem}
+.prose th,.prose td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.prose th{background:var(--panel);color:var(--white);font-family:var(--head);font-weight:800}
+.prose code{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;
+  background:rgba(255,255,255,.06);padding:.15em .4em;border-radius:3px;
+}
+.prose hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
+.intro-prose{font-size:1.05rem}
+
+/* ---------- vor / zurueck ---------- */
+.pagenav{display:grid;gap:1rem;grid-template-columns:1fr 1fr;margin-top:4rem}
+.pn{
+  border:1px solid var(--line);padding:1rem 1.2rem;color:var(--text);
+  font-family:var(--head);font-weight:800;font-size:.95rem;line-height:1.35;
+}
+.pn:hover{border-color:var(--gold);color:var(--gold-hi);text-decoration:none}
+.pn span{
+  display:block;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.35rem;font-weight:800;
+}
+.pn.next{text-align:right;grid-column:2}
+.pn.prev{grid-column:1}
+
+/* ---------- Uebersicht ---------- */
+.guides{display:grid;gap:1.2rem;margin-top:2.5rem}
+.guide{
+  display:block;border:1px solid var(--line);background:var(--panel-2);
+  padding:1.5rem 1.6rem;color:var(--text);
+}
+.guide:hover{border-color:var(--gold);text-decoration:none}
+.guide h2{font-size:1.3rem;margin-bottom:.5rem}
+.guide:hover h2{color:var(--gold-hi)}
+.guide p{margin:0;font-size:.95rem;color:var(--muted)}
+
+/* ---------- Fuss ---------- */
+footer{background:var(--panel);border-top:1px solid var(--line);padding:3rem 0;font-size:.88rem}
+.foot{display:flex;gap:2rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.social{display:flex;gap:1.5rem}
+.social a{color:var(--text)}
+.copy{color:var(--muted);max-width:52ch}
+
+@media (max-width:860px){ nav{display:none} }
+@media (max-width:640px){
+  body{font-size:16px}
+  .article{padding:2.5rem 1.25rem 3.5rem}
+  .brand span{display:none}
+  .brand img{width:68px;height:68px;margin:-4px 0 -20px}
+  .pagenav{grid-template-columns:1fr}
+  .pn.next,.pn.prev{grid-column:1;text-align:left}
+}
+
+.more-head{font-size:1.35rem;margin:4rem 0 0}
+
+.langswitch{margin:-1rem 0 2rem;font-size:.86rem}
+.langswitch a{color:var(--gold)}
+
+/* Autorenkasten: kleines rundes Bild statt bildschirmfuellender Kachel */
+.author-pic{margin:1.4rem 0 .9rem}
+.author-pic img{
+  width:88px;height:88px;max-height:none;
+  border-radius:50%;object-fit:cover;
+  border:1px solid var(--line);
+  margin-inline:0;
+}
+
+</style>
+</head>
+<body>
+<div class="strip">
+  Written in 2021 and 2022, when NFTs were new. Unchanged since.
+</div>
+<header>
+  <div class="bar">
+    <a class="brand" href="../../">
+      <img src="../../assets/logo.png" alt="The Angels' Wing">
+      <span>The Angels' Wing</span>
+    </a>
+    <nav>
+      <a href="../../#podcast">Podcast</a>
+      <a href="../../#artists">The Artists</a>
+      <a href="../../#gallery">Gallery</a>
+      <a href="../../#story">The Story</a>
+      <a href="../../nft-buy/">Guides</a>
+    </nav>
+    <a class="btn" href="https://oncyber.io/casperb_collab" target="_blank" rel="noopener noreferrer">Enter Gallery</a>
+  </div>
+</header>
+<main class="wrap article">
+<p class="kicker"><a href="../">Buy NFTs &ndash; the complete guide</a></p>
+<h1>Analyze and evaluate NFT</h1>
+<p class="langswitch"><a href="../../nft-kaufen/nft-analysieren-und-bewerten/">Auf Deutsch lesen</a></p>
+<div class="prose">
+<p>In this article we want to show different ways to analyze a Non-Fungible Token (NFT). The main aim is to identify potential risks and to be able to estimate future performance.<br/><br/><strong>The details from this article complement the main article: → <a href="../">Buy NFT</a></strong></p><h3>Collections</h3><p>On OpenSea, the NFT&#8217;s smart contracts are presented as so-called collections. A smart contract according to the <a href="https://eips.ethereum.org/EIPS/eip-721" target="_blank" rel="noopener noreferrer">EIP-721</a> standard corresponds to exactly one collection. According to the <a href="https://web.archive.org/web/20221207065053/https://docs.opensea.io/reference/retrieving-collections" target="_blank" rel="noopener noreferrer">documentation</a>, a smart cContract can also reference multiple collections under <a href="https://eips.ethereum.org/EIPS/eip-1155" target="_blank" rel="noopener noreferrer">EIP-1155</a>. On OpenSea the collection page under the section <strong>&#8220;Items</strong>&#8221; provides first information about the contained tokens. Here, for example, the number of tokens created, the number of different owners (or actually only the wallet addresses used), the total trading volume and, above all, the important <strong>&#8220;floor price</strong>&#8221; are displayed. The floor price indicates what the lowest price in the collection is at the moment. In the <strong>&#8220;Activity</strong>&#8221; section, you can make an initial estimate of how actively a collection is currently being traded based on the average price, trading volume and number of sales.</p><figure><img loading="lazy" decoding="async" src="../../assets/media/2021-10-2021-10-21-17.24.50.gif" alt=""/><figcaption>A negative example to start with. The extremely hyped project &#8220;MekaVerse&#8221; only has a floor price of 1.8 ETH in this record. At its peak, however, the project had a floor of 6.7 ETH. The other metrics under activity are also pointing significantly south.</figcaption></figure><p>The floor price and the other statistics are not yet sufficient for a well-founded analysis &#8211; after all, a particularly rare token may be hiding among the tokens.</p><h3>Are the basics right? Do Your Own Research! (DYOR.)</h3><p>Buying an NFT carries great risks. Especially if you are speculating on rapid performance. There are actually investors who buy next tokens &#8220;like a monkey&#8221; (&#8220;ape in&#8221;) without much thought. Of course, some investors are always successful with such a strategy. But we are very sure that there are far more losers than winners in this game. We therefore strongly recommend that you always carry out an intensive research before making a purchase. Do Your Own Research! (DYOR.) This principle applies to all coins, as well as to all fungible and non-fungible tokens.</p><p>Please always clarify at least the following questions first:</p><ol><li>Is the project really unique?</li><li>Am I buying a pig in a poke?</li><li>What is the reputation of the team behind the project?<ul><li>Are the team members known by their real names?</li><li>Are team members known on social networks like Twitter or LinkedIn?</li><li>How old are the social media accounts of the team members?</li><li>Do the members have a good reputation in the community?</li></ul></li><li>Can the promises made on the website or in advertising be verified in advance?</li><li>What are the concrete plans for the project?<ul><li>What is planned after the launch?</li></ul></li><li>Is there an active and engaged community?</li><li>How did I hear about the project?<ul><li>Does the influencer in question transparently state whether they are also invested?</li><li>Did I find out about the project through spam (&#8220;Follow/Like/Retweet/Comment to get a free spot&#8221;) or through an authentic recommendation?</li></ul></li><li>Was the project developed according to good principles?<ul><li>Is the project decentralized?</li><li>Is the smart contract verified?</li><li>Are there back doors in the code? (Programming knowledge is an advantage here)<br/><br/><strong>Our tip:</strong> Check many technical aspects via the browser extension <a href="https://ecosystem.indorse.io/nft-extension" target="_blank" rel="noopener noreferrer">Nifty Scanner</a>.</li></ul></li></ol><p><br/><br/><strong>TODO</strong>, this article is just finishing up&#8230;.</p><p><strong>You want to know more about NFT? Continue reading the main article: → <a href="../">Buy NFT</a></strong></p>
+
+<h3>About the author</h3>
+<figure class="author-pic"><img loading="lazy" decoding="async" src="../../assets/media/johannes-metaangel.jpg" alt=""/></figure>
+<p><strong>Johannes</strong> made his first bitcoin transaction in 2013. He has been fascinated by cryptography and the cypherpunk ethos ever since. He is a cypherpunk at heart, which is why pretty much everything he builds, like <a href="https://ordpool.space" target="_blank" rel="noopener noreferrer">ordpool.space</a>, is open source and free.</p>
+</div>
+<h2 class="more-head">More in this series</h2>
+<div class="guides">
+      <a class="guide" href="../">
+        <h2>Buy NFTs - the complete guide</h2>
+        <p>The long one. Wallets, marketplaces, what a token actually is, and three different reasons people buy.</p>
+      </a>
+      <a class="guide" href="../background-knowledge-to-blockchain-token/">
+        <h2>Background knowledge on blockchain tokens</h2>
+        <p>What sits underneath: token standards, and what fungible and non-fungible really mean.</p>
+      </a>
+      <a class="guide" href="../nft-derivatives/">
+        <h2>NFT derivatives</h2>
+        <p>Fractional ownership, indices and the things that look like NFTs but are not.</p>
+      </a>
+      <a class="guide" href="../oncyber-galleries-and-collabs/">
+        <h2>On Cyber galleries and Collabs</h2>
+        <p>A walkthrough of the gallery software The Angels&#x27; Wing was built on, written with CasperB.</p>
+      </a>
+</div>
+</main>
+<footer>
+  <div class="wrap foot">
+    <div class="copy">
+      Copyright &copy; 2022&ndash;2023 The Angels' Wing. All rights to the artwork remain solely with the artists.<br>
+      Supported by <a href="https://haushoppe.art" target="_blank" rel="noopener noreferrer">HAUS HOPPE</a>.
+    </div>
+    <div class="social">
+      <a href="../../">The archive</a>
+      <a href="https://feed.theangelswing.art/">Podcast</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

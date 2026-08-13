@@ -1,0 +1,1498 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Angels' Wing NFT Gallery</title>
+<meta name="description" content="The Angels' Wing was a virtual 3D gallery and community supporting independent NFT artists. An archive of the gallery, its artists and its podcast.">
+<link rel="icon" href="assets/logo.png">
+<meta property="og:title" content="The Angels' Wing NFT Gallery">
+<meta property="og:description" content="A virtual 3D gallery and community supporting independent NFT artists.">
+<meta property="og:image" content="assets/logo.png">
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(assets/fonts/montserrat-800-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(assets/fonts/montserrat-800-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/roboto-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/roboto-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/roboto-500-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/roboto-500-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root{
+  --bg:#282828;
+  --panel:#1e1f20;
+  --panel-2:#232425;
+  --text:#dbdbdb;
+  --muted:#969696;
+  --gold:#b48b3c;
+  --gold-hi:#d4a94f;
+  --white:#fbfcff;
+  --line:#3a3b3d;
+  --head:'Montserrat',system-ui,sans-serif;
+  --body:'Roboto',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font:400 16px/1.7 var(--body);
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--gold-hi);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3{font-family:var(--head);font-weight:800;color:var(--white);line-height:1.15;margin:0}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 1.5rem}
+
+/* ---------- archive strip ---------- */
+.strip{
+  background:var(--gold);color:#231a09;font-size:.82rem;font-weight:500;
+  text-align:center;padding:.55rem 1rem;letter-spacing:.01em;
+}
+.strip a{color:#231a09;text-decoration:underline}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:50;background:rgba(30,31,32,.94);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+}
+.bar{display:flex;align-items:center;gap:1.5rem;padding:.35rem 0;max-width:1180px;margin:0 auto;padding-inline:1.5rem}
+.brand{display:flex;align-items:center;gap:.7rem;margin-right:auto}
+header{overflow:visible}
+.brand img{
+  width:104px;height:104px;
+  position:relative;z-index:3;
+  margin:-8px 0 -34px;
+}
+.brand span{font-family:var(--head);font-weight:800;font-size:.95rem;color:var(--white);letter-spacing:.02em}
+nav{display:flex;gap:1.6rem;align-items:center;flex-wrap:wrap}
+nav a{color:var(--text);font-size:.92rem}
+nav a:hover{color:var(--gold-hi);text-decoration:none}
+.btn{
+  display:inline-block;background:var(--gold);color:#fff;font-weight:500;
+  padding:.72rem 1.5rem;border-radius:2px;font-size:.92rem;letter-spacing:.02em;
+  transition:background .15s;
+}
+.btn:hover{background:var(--gold-hi);text-decoration:none;color:#fff}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:min(86vh,760px);display:flex;align-items:center;
+  background:#111 url(assets/hero-desk.jpg) center/cover no-repeat;
+}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.55))}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-block:5rem}
+.hero h1{
+  font-size:clamp(2.6rem,7.5vw,5rem);color:#fff;
+  text-shadow:0 2px 24px rgba(0,0,0,.5);margin-bottom:2rem;max-width:16ch;
+}
+.hero h1 .heart{color:#fff}
+.intro{
+  background:rgba(40,40,40,.72);backdrop-filter:blur(3px);
+  padding:1.6rem 1.8rem;max-width:640px;font-size:1.02rem;
+}
+.intro p{margin:0}
+.intro a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.hero .btn{margin-top:1.6rem}
+
+/* Zettel, der ueber dem alten Inhalt klebt */
+.sticky-note{
+  position:absolute;z-index:3;right:0;top:24%;width:355px;
+  background:#f9d65f;color:#241c0d;
+  padding:2rem 1.8rem 2.2rem;
+  font-family:var(--head);font-weight:800;font-size:1.32rem;line-height:1.35;
+  transform:rotate(-4deg);
+  box-shadow:0 22px 45px rgba(0,0,0,.55),0 6px 14px rgba(0,0,0,.4);
+}
+.sticky-note::before{
+  content:"";position:absolute;left:50%;top:-11px;margin-left:-34px;
+  width:68px;height:22px;background:rgba(255,255,255,.42);
+  transform:rotate(1.5deg);
+}
+.sticky-note p{margin:0}
+
+/* ---------- sections ---------- */
+section{padding:5.5rem 0;scroll-margin-top:80px}
+section.alt{background:var(--panel)}
+.eyebrow{
+  font-family:var(--head);font-weight:800;font-size:.75rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;
+}
+h2{font-size:clamp(1.9rem,4vw,2.9rem);margin-bottom:1.6rem}
+.lead{max-width:68ch;font-size:1.05rem}
+.lead p{margin:0 0 1.1rem}
+
+/* ---------- artists ---------- */
+.grid{
+  display:grid;gap:1.6rem;margin-top:2.8rem;align-items:start;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+}
+.card{
+  background:var(--panel-2);border:1px solid var(--line);
+  overflow:hidden;scroll-margin-top:120px;
+}
+/* Sprungziel aus einer alten /artists/<name>/-URL sichtbar machen */
+.card:target{outline:2px solid var(--gold);outline-offset:3px}
+section.alt .card{background:#191a1b}
+.card-art{aspect-ratio:16/9;overflow:hidden;background:#111}
+.card-art img{width:100%;height:100%;object-fit:cover}
+.card-art--empty{background:linear-gradient(135deg,#232425,#1a1b1c)}
+.card-body{padding:0 1.4rem 1.5rem;position:relative}
+.avatar{
+  width:78px;height:78px;border-radius:50%;object-fit:cover;
+  border:3px solid var(--panel-2);margin-top:-39px;position:relative;z-index:2;
+  background:#111;
+}
+section.alt .avatar{border-color:#191a1b}
+.card h3{font-size:1.22rem;margin:.85rem 0 .9rem}
+
+/* aufklappbare Details */
+details summary{
+  cursor:pointer;list-style:none;user-select:none;
+  display:inline-flex;align-items:center;gap:.45rem;
+  color:var(--gold-hi);font-size:.84rem;letter-spacing:.03em;
+  padding:.15rem 0;
+}
+summary::-webkit-details-marker{display:none}
+summary::marker{content:""}
+summary:hover{color:#e6c98a}
+summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.more::after{
+  content:"";width:.42em;height:.42em;flex:none;
+  border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;
+  transform:rotate(45deg) translate(-.1em,-.1em);transition:transform .18s ease;
+}
+details[open] .more::after{transform:rotate(-135deg) translate(-.1em,-.1em)}
+.lbl-less{display:none}
+details[open] .lbl-more{display:none}
+details[open] .lbl-less{display:inline}
+details[open] .bio{margin-top:.9rem}
+.bio{font-size:.93rem;color:var(--text);overflow-wrap:anywhere}
+.bio p{margin:0 0 .7rem}
+.bio a{word-break:break-word}
+.bio em{color:var(--muted)}
+.pills{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+.pill{
+  font-size:.75rem;letter-spacing:.03em;padding:.3rem .7rem;
+  border:1px solid var(--line);color:var(--muted);border-radius:2px;
+}
+.pill:hover{border-color:var(--gold);color:var(--gold-hi);text-decoration:none}
+
+/* ---------- Guides ---------- */
+.guides{display:grid;gap:1.1rem;margin-top:2.5rem;grid-template-columns:repeat(auto-fill,minmax(330px,1fr))}
+.guide{
+  display:block;border:1px solid var(--line);background:var(--panel-2);
+  padding:1.4rem 1.5rem;color:var(--text);
+}
+section.alt .guide{background:#191a1b}
+.guide:hover{border-color:var(--gold);text-decoration:none}
+.guide h3{font-size:1.12rem;margin:0 0 .45rem;line-height:1.3}
+.guide:hover h3{color:var(--gold-hi)}
+.guide p{margin:0;font-size:.9rem;color:var(--muted);line-height:1.55}
+
+/* ---------- gallery ---------- */
+.shots{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:2.4rem}
+.shots img{border:1px solid var(--line)}
+.floorplan{margin-top:2.4rem;border:1px solid var(--line)}
+figure{margin:0}
+figcaption{font-size:.82rem;color:var(--muted);margin-top:.6rem}
+
+/* ---------- podcast ---------- */
+.pod{
+  border:1px solid var(--gold);padding:2rem 2.2rem;margin-top:2rem;
+  display:flex;gap:2rem;align-items:center;flex-wrap:wrap;
+}
+.pod div{flex:1;min-width:260px}
+.pod h3{font-size:1.3rem;margin-bottom:.6rem}
+code{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+  background:rgba(255,255,255,.06);padding:.15em .45em;border-radius:3px;
+}
+
+/* ---------- Episodenliste ---------- */
+.ep-head{font-size:1.5rem;margin:3.5rem 0 .8rem}
+.ep-intro{max-width:68ch;margin:0 0 2rem}
+.eps{
+  display:grid;gap:1.1rem .9rem;margin-top:1.6rem;
+  grid-template-columns:repeat(auto-fill,minmax(155px,1fr));
+}
+
+/* Klappleiste ueber den beiden langen Listen */
+.ep-block{margin-top:1.4rem}
+.ep-block > summary{
+  display:flex;align-items:center;gap:.6rem;cursor:pointer;list-style:none;
+  border:1px solid var(--line);padding:.85rem 1.2rem;
+  font-family:var(--head);font-weight:800;font-size:.9rem;letter-spacing:.02em;
+  color:var(--gold-hi);transition:border-color .15s,color .15s;
+}
+.ep-block > summary::-webkit-details-marker{display:none}
+.ep-block > summary:hover{border-color:var(--gold);color:#e6c98a}
+.ep-block > summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.ep-block > summary::after{
+  content:"";margin-left:auto;width:.45em;height:.45em;flex:none;
+  border-right:1.8px solid currentColor;border-bottom:1.8px solid currentColor;
+  transform:rotate(45deg) translate(-.1em,-.1em);transition:transform .18s ease;
+}
+.ep-block[open] > summary::after{transform:rotate(-135deg) translate(-.1em,-.1em)}
+.ep{display:flex;flex-direction:column;color:var(--text);text-decoration:none}
+.ep-art{
+  position:relative;display:block;aspect-ratio:16/9;overflow:hidden;
+  background:#111;border:1px solid var(--line);
+}
+.ep-art img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .25s ease,opacity .25s ease;
+}
+.ep:hover .ep-art img{transform:scale(1.05);opacity:.85}
+.ep:hover .ep-art{border-color:var(--gold)}
+/* Abspiel-Dreieck, damit erkennbar ist, dass es Videos sind */
+.ep-art::after{
+  content:"";position:absolute;left:50%;top:50%;
+  width:0;height:0;margin:-11px 0 0 -8px;
+  border-left:20px solid rgba(255,255,255,.92);
+  border-top:12px solid transparent;border-bottom:12px solid transparent;
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,.6));
+  opacity:.85;transition:opacity .25s ease;
+}
+.ep:hover .ep-art::after{opacity:1}
+.ep-dur{
+  position:absolute;right:.4rem;bottom:.4rem;z-index:2;
+  background:rgba(0,0,0,.78);color:#fff;
+  font-size:.7rem;font-variant-numeric:tabular-nums;
+  padding:.12rem .35rem;border-radius:2px;
+}
+.ep-title{
+  font-size:.78rem;line-height:1.4;margin-top:.5rem;color:var(--text);
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+}
+.ep:hover .ep-title{color:var(--gold-hi)}
+
+/* ---------- roster ---------- */
+.roster{
+  margin-top:2.5rem;font-size:.86rem;color:var(--muted);line-height:2;
+  border-top:1px solid var(--line);padding-top:1.6rem;
+}
+
+/* ---------- footer ---------- */
+footer{background:var(--panel);border-top:1px solid var(--line);padding:3rem 0;font-size:.88rem}
+.foot{display:flex;gap:2rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.social{display:flex;gap:1.6rem}
+.social a{color:var(--text)}
+.social a:hover{color:var(--gold-hi);text-decoration:none}
+.copy{color:var(--muted);max-width:52ch}
+
+@media (max-width:860px){
+  nav{display:none}
+}
+/* zwischen Tablet und Desktop wird es neben Ueberschrift und Intro-Kasten eng */
+@media (max-width:1100px){
+  /* relative statt static: das Klebeband ist absolut positioniert und braucht
+     den Zettel als Bezugspunkt, sonst haengt es am Hero-Container */
+  .sticky-note{
+    position:relative;inset:auto;width:auto;max-width:26rem;margin:2.2rem 0 0;
+    transform:rotate(-2.5deg);
+  }
+}
+@media (max-width:640px){
+  section{padding:3.5rem 0}
+  .bar{gap:.75rem;padding-block:.45rem}
+  .brand img{width:68px;height:68px;margin:-4px 0 -20px}
+  .brand span{font-size:.85rem}
+  .btn{padding:.6rem 1rem;font-size:.82rem;white-space:nowrap}
+  .hero{min-height:auto}
+  .hero .wrap{padding-block:3.5rem}
+  .intro{padding:1.2rem}
+  .sticky-note{
+    position:relative;inset:auto;width:auto;max-width:22rem;margin:2rem 0 0;
+    transform:rotate(-2deg);font-size:1.14rem;padding:1.6rem 1.4rem 1.8rem;
+  }
+  .grid{grid-template-columns:1fr}
+  .pod{padding:1.4rem}
+  .foot{gap:1.4rem}
+  .social{gap:1.2rem;flex-wrap:wrap}
+}
+@media (max-width:420px){
+  .brand span{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="strip">
+  This site is an archive. The gallery was actively curated from 2022 to 2023.
+  The <a href="https://feed.theangelswing.art/">podcast archive</a> is still live.
+</div>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="#top">
+      <img src="assets/logo.png" alt="The Angels' Wing">
+      <span>The Angels' Wing</span>
+    </a>
+    <nav>
+      <a href="#podcast">Podcast</a>
+      <a href="#artists">The Artists</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#story">The Story</a>
+      <a href="nft-buy/">Guides</a>
+    </nav>
+    <a class="btn" href="https://oncyber.io/casperb_collab" target="_blank" rel="noopener noreferrer">Enter Gallery</a>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <h1>We <span class="heart">&#9829;</span> NFT Indie Art</h1>
+    <div class="intro"><p>We were The Angels’ Wing, a <a href="https://oncyber.io/casperb_collab" target="_blank" rel="noopener noreferrer">virtual 3D gallery</a> and community focused on supporting <a href="#artists">independent NFT artists</a>. We showcased their beautiful artwork and gave them visibility to connect with potential collectors. Every Sunday we held a <a href="#podcast">public podcast</a> and talked with our emerging artists about their artwork, pricing strategies, NFT marketplaces and much more.</p></div>
+    <a class="btn" href="https://oncyber.io/casperb_collab" target="_blank" rel="noopener noreferrer">Enter Gallery</a>
+    <aside class="sticky-note">
+      <p>We are still around. If NFTs and crypto ever get cool again, don’t be surprised to see us back.</p>
+    </aside>
+  </div>
+</div>
+
+<section id="podcast" class="alt">
+  <div class="wrap">
+    <div class="eyebrow">The Podcast</div>
+    <h2>NFT Art Podcast</h2>
+    <div class="lead"><p>Every Sunday we held a public space and talked with our collectors and emerging artists about their artwork, pricing strategies, NFT marketplaces and much more.</p></div>
+    <div class="pod">
+      <div>
+        <h3>66 episodes, roughly 46 hours</h3>
+        <p style="margin:0">The complete run from March 2022 to September 2023 is archived and still subscribable at <code>feed.theangelswing.art</code>.</p>
+      </div>
+      <a class="btn" href="https://feed.theangelswing.art/" target="_blank" rel="noopener noreferrer">Open the archive</a>
+    </div>
+
+    <h3 class="ep-head">Watch the episodes</h3>
+    <p class="ep-intro">The spaces themselves were audio. The videos came afterwards, cut with the artwork on screen so you can see what was being talked about. The links open YouTube.</p>
+    <details class="ep-block">
+      <summary><span class="lbl-more">Show all 51 episodes</span><span class="lbl-less">Hide the episodes</span></summary>
+      <div class="eps">
+      <a class="ep" href="https://www.youtube.com/watch?v=2vNVjXmnoyI" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/2vNVjXmnoyI.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:30:02</span>
+        </span>
+        <span class="ep-title">Space #1 - The Angels&#x27; Wing Gallery Opening</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=IqsVTiz7HMg" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/IqsVTiz7HMg.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:21:24</span>
+        </span>
+        <span class="ep-title">Space #2 - Gallery Opening Review | Virtual galleries</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=xxZ9ZkO52HQ" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/xxZ9ZkO52HQ.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">52:45</span>
+        </span>
+        <span class="ep-title">Space #3 - Welcoming our new artists</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=9evpyAUTKT4" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/9evpyAUTKT4.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:16:55</span>
+        </span>
+        <span class="ep-title">Space #4 - New artists | NFT Marketplaces</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=D6MOirCKISs" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/D6MOirCKISs.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:11:13</span>
+        </span>
+        <span class="ep-title">Space #5 - New artists | Launching Strategies</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=1h5BuzaCAT4" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/1h5BuzaCAT4.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:06:17</span>
+        </span>
+        <span class="ep-title">Space #6 - Featuring Aly x 100 Day</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=cZ4mvd2JAdk" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/cZ4mvd2JAdk.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">57:15</span>
+        </span>
+        <span class="ep-title">Space #7 - Featuring mallovv &amp; Yoko</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=JtNNvshhaqo" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/JtNNvshhaqo.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:13:50</span>
+        </span>
+        <span class="ep-title">Space #8 - SPECIAL: Colours Of Time | jacknetic, Sylvie, Johannes &amp; Casper&#x27;s uncle Tan Chiang Kiong</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=OVWSECd4x40" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/OVWSECd4x40.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">59:06</span>
+        </span>
+        <span class="ep-title">Space #9 - Artist &amp; collector chat | Featuring Ethspresso and Shruuump</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=LXV7ob5birM" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/LXV7ob5birM.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:02:54</span>
+        </span>
+        <span class="ep-title">Space #10 - Art during Stormy Times</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=Yi2gkOFqM3Y" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/Yi2gkOFqM3Y.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">55:24</span>
+        </span>
+        <span class="ep-title">Space #11 - Art in a Multi-Chain World</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=q8d3YMDLPg0" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/q8d3YMDLPg0.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">58:55</span>
+        </span>
+        <span class="ep-title">Space #12 - Art for mental health and well-beeing in the NFT Space with Firebrand and Jxdelyn</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=QGZYUMMwgzM" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/QGZYUMMwgzM.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:04:56</span>
+        </span>
+        <span class="ep-title">Space #13 - Generative Art 101 (Art Blocks and fxhash) with Camille Roux (@camillerouxart)</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=TQKmMCfKbDg" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/TQKmMCfKbDg.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:00:15</span>
+        </span>
+        <span class="ep-title">Space #14 - Dealing with commercial rights on NFTs | Featuring Arjen Roos (@ArjenRoosWork)</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=zVABBk4VscM" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/zVABBk4VscM.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">55:19</span>
+        </span>
+        <span class="ep-title">Space #15 - Featuring Eislyn.eth and jprittee.eth | No FOMO NYC Party #nofomonyc and Fragile Friends</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=6cDvH7ns3dw" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/6cDvH7ns3dw.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:13:41</span>
+        </span>
+        <span class="ep-title">Space #16 - Special feature: Scales by Anna Judd. Radical generosity, and gamification of NFTs</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=Gb4d8FGjMuQ" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/Gb4d8FGjMuQ.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">53:32</span>
+        </span>
+        <span class="ep-title">Space #17 - Artist and Collector Chat – featuring Unickate</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=hNBEAlqNjvw" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/hNBEAlqNjvw.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:32:21</span>
+        </span>
+        <span class="ep-title">Space #18 - Special feature: Web3 Security for NFT Artists and Collectors with Crystal Groves</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=ig-4DRwLas4" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/ig-4DRwLas4.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">57:31</span>
+        </span>
+        <span class="ep-title">Space #19 - Angels, Sun, and Stars - featuring HAL, Ethspresso, Yune, and announcing 2 contests!</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=zuIPbJRnoZA" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/zuIPbJRnoZA.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:00:09</span>
+        </span>
+        <span class="ep-title">Space #20 - AI Generated Art - featuring August Rosedale (@AugustFR) and Kaysurreal (@kak_dc)</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=p8ERHv0uSQ4" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/p8ERHv0uSQ4.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">57:41</span>
+        </span>
+        <span class="ep-title">Space #21 - Community Chat - featuring Lorr and AlyAsh</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=wAderERGhuU" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/wAderERGhuU.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">59:21</span>
+        </span>
+        <span class="ep-title">Space #22 - AI generated Art with Charles (@HODLFrance) &amp; Jessica Salinas (@wondermundo)</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=tDLdxoB-bs8" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/tDLdxoB-bs8.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">58:38</span>
+        </span>
+        <span class="ep-title">Space #23 - NFT Market and Royalties with Daniel Tenner (@swombat)</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=FKuZ9Iep3uU" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/FKuZ9Iep3uU.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">43:37</span>
+        </span>
+        <span class="ep-title">Space #24 - Modern Cubism with Jason Chambers (@jasonlchambers) &amp; Ishita Banerjee (@soulcurryart)</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=GiowXQFJiq8" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/GiowXQFJiq8.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">31:18</span>
+        </span>
+        <span class="ep-title">Space #25 - Portraits and Fantasy Art, Indonesian style with Thari (@opus_cula)</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=0tIMhwHhOMs" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/0tIMhwHhOMs.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">50:08</span>
+        </span>
+        <span class="ep-title">Space #26 - NFT Lending and Market Dynamics with Daniel Tenner (@swombat)</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=aWdggY_hjGg" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/aWdggY_hjGg.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">45:35</span>
+        </span>
+        <span class="ep-title">Space #27 - Visual Storytelling with Stephanie Carroll (@eislyn_eth) &amp; Frankie Li (@gus_thesquirrel)</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=nulBWpcytO0" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/nulBWpcytO0.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">42:43</span>
+        </span>
+        <span class="ep-title">Space #28 - Hefty Art and M.H. Husain&#x27;s &quot;Fury&quot; auction at Sotheby&#x27;s</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=U5MKsn7bNvA" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/U5MKsn7bNvA.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">41:54</span>
+        </span>
+        <span class="ep-title">Space #29 - What is Trash Art with Eric Rhodes (@ericprhodes) and Drea Jay (@EmpressTrash)</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=jKLpSveVQAc" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/jKLpSveVQAc.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">42:38</span>
+        </span>
+        <span class="ep-title">Space #30 - NFT Project Analysis with Daniel Tenner (@swombat)</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=kohf4CZV0vo" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/kohf4CZV0vo.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">46:34</span>
+        </span>
+        <span class="ep-title">Space #31 - Chat with Zeneca about ZenAcademy,  ZenChests, the future PFP project, and NFT art</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=qTXcmlNkuiU" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/qTXcmlNkuiU.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">41:26</span>
+        </span>
+        <span class="ep-title">Space #32 - Chat with Erica Reiling, the artist behind CryptoVenus</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=euv45CyjiX0" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/euv45CyjiX0.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">40:45</span>
+        </span>
+        <span class="ep-title">Space #33 - Chat with Eric Rhodes, an artist in search of himself</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=6F2YSa7vuhE" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/6F2YSa7vuhE.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">41:54</span>
+        </span>
+        <span class="ep-title">Space #34 - Heymint (@heymintxyz) Launchpad for NFT projects - with Mai, Momo &amp; Arjen</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=4gI4Pr0PhVY" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/4gI4Pr0PhVY.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">52:33</span>
+        </span>
+        <span class="ep-title">Space #38 - Making the Impossible Possible with Piter Pasma</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=yvd2e568TY4" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/yvd2e568TY4.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">37:58</span>
+        </span>
+        <span class="ep-title">Space #39 - Soul Minimalism with Jan Baumgartner</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=VEuZeMzl_zo" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/VEuZeMzl_zo.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">42:59</span>
+        </span>
+        <span class="ep-title">Space #40 - Movement and Growth through colors and form with Maddi Kai</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=S89l59YmyFQ" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/S89l59YmyFQ.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">59:10</span>
+        </span>
+        <span class="ep-title">Space #41 - NFTs as startup funding with Daniel Tenner (@swombat) - Pledg3r / Investibles</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=bDI5Q68V09w" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/bDI5Q68V09w.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">49:19</span>
+        </span>
+        <span class="ep-title">Space #42 - Exploring New Frontiers in Art with Thomas Art</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=gHAYviQVFhw" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/gHAYviQVFhw.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">38:53</span>
+        </span>
+        <span class="ep-title">Space #43 - The Power of Daily Practice with Sylvo, AlyAsh and ArtMis</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=afTm2_jiZtk" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/afTm2_jiZtk.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">41:45</span>
+        </span>
+        <span class="ep-title">Space #44 - 300 Days of Cubism with Jason Chambers</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=xccO4tk0tK4" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/xccO4tk0tK4.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">33:18</span>
+        </span>
+        <span class="ep-title">Space #45 - The Nature of Art with Eislyn, AlyAsh, and ArtMis</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=875UTD0TiN4" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/875UTD0TiN4.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">45:38</span>
+        </span>
+        <span class="ep-title">Space #46 - Generative impressionism with Matt Perkins</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=ijHXGnA4KSU" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/ijHXGnA4KSU.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">43:11</span>
+        </span>
+        <span class="ep-title">Space #47 - Camille Roux: Creative Coder &amp; Generative artist</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=Zyz3YlfrkGU" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/Zyz3YlfrkGU.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">48:04</span>
+        </span>
+        <span class="ep-title">Space #48 - Control the output: fx(params) with Daniel Catt &amp; Brendon Rell</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=eiuAFlyNSOA" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/eiuAFlyNSOA.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">36:24</span>
+        </span>
+        <span class="ep-title">Space #49 - Generative Romanticism with Elsif</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=NXwzs-IVAhE" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/NXwzs-IVAhE.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">51:36</span>
+        </span>
+        <span class="ep-title">Space #50 - Immediate Expression with AJ Rojas</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=HAOmsmcvdJ4" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/HAOmsmcvdJ4.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">48:23</span>
+        </span>
+        <span class="ep-title">Space #51 - Endless Possibilities with Piter Pasma (Universal Rayhatcher)</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=nPSJuNnf9mc" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/nPSJuNnf9mc.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">58:47</span>
+        </span>
+        <span class="ep-title">Space #52 - Content creation and building in the digital art space with Kaloh</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=_7BUZSKI35M" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/_7BUZSKI35M.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">45:52</span>
+        </span>
+        <span class="ep-title">Space #53 - A year into Scales with Anna Judd and Matthew Miller</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=18ofQDhLx_M" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/18ofQDhLx_M.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">54:56</span>
+        </span>
+        <span class="ep-title">Space #54 - Between Collecting, Curating, and Creating Generative AI Art with Danielle King</span>
+      </a>
+      </div>
+    </details>
+
+    <h3 class="ep-head">Trailers</h3>
+    <p class="ep-intro">One-minute clips that announced an upcoming space.</p>
+    <details class="ep-block">
+      <summary><span class="lbl-more">Show all 15 trailers</span><span class="lbl-less">Hide the trailers</span></summary>
+      <div class="eps">
+      <a class="ep" href="https://www.youtube.com/watch?v=hhuthtSfVYw" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/hhuthtSfVYw.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:00</span>
+        </span>
+        <span class="ep-title">Trailer Space #33: Artist Eric Rhodes in search of himself, what would have been if... #art #podcast</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=hgjCkIICOPM" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/hgjCkIICOPM.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">0:59</span>
+        </span>
+        <span class="ep-title">Trailer Space #34 - Heymint Launchpad for NFT projects</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=ojrDx2J31Es" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/ojrDx2J31Es.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:00</span>
+        </span>
+        <span class="ep-title">Trailer Space #38 - Making the Impossible Possible with Piter Pasma</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=T42Ta03omRI" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/T42Ta03omRI.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">0:58</span>
+        </span>
+        <span class="ep-title">Trailer Space #39 - Soul Minimalism with Jan Baumgartner</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=qnPjMXrOpKg" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/qnPjMXrOpKg.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">0:59</span>
+        </span>
+        <span class="ep-title">Trailer Space #40 - Movement and Growth through colors and form with Maddi Kai</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=74TC57CGV5A" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/74TC57CGV5A.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:00</span>
+        </span>
+        <span class="ep-title">Trailer Space #41 - NFTs as startup funding with Daniel Tenner - Pledg3r / Investibles</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=UvDvuXjrQAM" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/UvDvuXjrQAM.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:00</span>
+        </span>
+        <span class="ep-title">Trailer Space #47 - Camille Roux: Creative Coder &amp; Generative artist</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=j35IAUEdhUo" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/j35IAUEdhUo.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:00</span>
+        </span>
+        <span class="ep-title">Trailer Space #48 -  Dan Catt about the difference between short and long-form genart and fx(params)</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=CcO7KZ9FuFs" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/CcO7KZ9FuFs.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:00</span>
+        </span>
+        <span class="ep-title">Trailer Space #48 -  Brendon Rell about fx(params) and YYYSeeed by Dan Catt</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=w7sA0MlXgG0" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/w7sA0MlXgG0.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:00</span>
+        </span>
+        <span class="ep-title">Trailer Space #49 - Generative Romanticism with Elsif</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=NbiehcA3_f0" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/NbiehcA3_f0.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:00</span>
+        </span>
+        <span class="ep-title">Trailer Space #50 - Immediate Expression with AJ Rojas</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=TcbJMcUpGYc" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/TcbJMcUpGYc.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:00</span>
+        </span>
+        <span class="ep-title">Trailer Space #51 - Endless Possibilities with Piter Pasma (Universal Rayhatcher)</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=uLu-5bG45fk" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/uLu-5bG45fk.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:01</span>
+        </span>
+        <span class="ep-title">Trailer Space #52 - Content creation and building in the digital art space with Kaloh</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=hAtCDRnUBcg" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/hAtCDRnUBcg.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:00</span>
+        </span>
+        <span class="ep-title">Trailer Space #53 - A year into Scales with Anna Judd and Matthew Miller</span>
+      </a>
+      <a class="ep" href="https://www.youtube.com/watch?v=lqAzKuzC2KQ" target="_blank" rel="noopener noreferrer">
+        <span class="ep-art">
+          <img src="assets/episodes/lqAzKuzC2KQ.jpg" alt="" loading="lazy" decoding="async">
+          <span class="ep-dur">1:00</span>
+        </span>
+        <span class="ep-title">Trailer Space #54 - Between Collecting, Curating, and Creating Generative AI Art with Danielle King</span>
+      </a>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section id="artists">
+  <div class="wrap">
+    <div class="eyebrow">The Artists</div>
+    <h2>33 artists</h2>
+    <div class="lead"><p>These artists showed their wonderful work in our gallery. The words and the links below are their own, as they stood at the time of the exhibition. All rights to the artwork remain solely with the artists.</p></div>
+    <div class="grid">
+      <article class="card" id="artist-aly">
+<div class="card-art"><img src="assets/works/aly-1.jpg" alt="Artwork by Aly" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/aly.jpg" alt="Aly" loading="lazy" decoding="async">
+          <h3>Aly</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p><em>Aly:</em> I’m making a 10k gen NFT project in 100 days, &amp; documenting the process every step of the way.</p>
+<p><em>Aly x 100 Day Project</em> :<br>The Aly x 100 Day Project is 100 1/1 illustrations of girls. I created this collection to showcase the diversity and beauty of femininity, and explore themes of melancholia, fantasy, identity and belonging.<br>These NFTs act as my genesis collection and fundraiser for both my current project (aly x 100 day project) and my upcoming larger generative collection.<br>The 100 day project is my attempt to &#8220;show my work&#8221; as an artist and NFT creator. For 100 days, I am documenting the artistic and intellectual process of making a larger (5k-10k) generative collection on twitter.<br>Each NFT purchase not only directly supports my work, but will include perks and benefits upon completion of the 100 days.<br>The 100 day project is currently active, and runs 14 March 2022 &#8211; 22 June 2022.<br><br>Collections:<br>🌐 <a href="https://opensea.io/collection/alyx100dayproject" target="_blank" rel="noopener noreferrer">OpenSea · alyx100dayproject</a></p>
+<a href="https://twitter.com/alyx100days" target="_blank" rel="noopener noreferrer">@alyx100days</a>
+<a href="https://linktr.ee/x100dayproject" target="_blank" rel="noopener noreferrer">linktr.ee/x100dayproject</a>
+<p></p>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/alyx100dayproject" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/alyx100days" target="_blank" rel="noopener noreferrer">@alyx100days</a><a class="pill" href="https://linktr.ee/x100dayproject" target="_blank" rel="noopener noreferrer">Linktree</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-andrea">
+<div class="card-art"><img src="assets/works/andrea-1.jpg" alt="Artwork by Andrea" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/andrea.jpg" alt="Andrea" loading="lazy" decoding="async">
+          <h3>Andrea</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p><em>Andrea</em> is a creative thinker, multimedia artist, currently working on <a href="https://twitter.com/search?q=%23FoilsNFT&amp;src=hashtag_click" target="_blank" rel="noopener noreferrer">#FoilsNFT</a> collection<br><em>Foils:</em> Unique handcrafted artworks, created by a generative process involving both human and digital interplay of aluminium foil.<br><br>Collection:<br>🌐 <a href="https://opensea.io/collection/foils" target="_blank" rel="noopener noreferrer">OpenSea · foils</a></p>
+<a href="https://twitter.com/andrealitmus" target="_blank" rel="noopener noreferrer">@andrealitmus</a>
+<a href="https://linktr.ee/andrealitmus" target="_blank" rel="noopener noreferrer">linktr.ee/andrealitmus</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://twitter.com/search?q=%23FoilsNFT&amp;amp;src=hashtag_click" target="_blank" rel="noopener noreferrer">Twitter</a><a class="pill" href="https://opensea.io/collection/foils" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/andrealitmus" target="_blank" rel="noopener noreferrer">@andrealitmus</a><a class="pill" href="https://linktr.ee/andrealitmus" target="_blank" rel="noopener noreferrer">Linktree</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-aoko-studio-all-very-goods">
+<div class="card-art"><img src="assets/works/aoko-studio-all-very-goods-1.jpg" alt="Artwork by AOKO Studio &amp; All Very Goods" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/aoko-studio-all-very-goods.jpg" alt="AOKO Studio &amp; All Very Goods" loading="lazy" decoding="async">
+          <h3>AOKO Studio &amp; All Very Goods</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p>All Very Goods &#8211; A design studio and line of limited edition goods. We are Black woman owned; Washington DC born &amp; raised. Our foundational belief is that representation matters<br><em>&#8216;Lucky You&#8217;</em> is a collection about encouraging women to feel solidarity with each other and pride in themselves<br><br>Collection:<br>🌐 <a href="https://opensea.io/collection/luckyyoubyaokostudio" target="_blank" rel="noopener noreferrer">OpenSea · luckyyoubyaokostudio</a></p>
+<a href="https://twitter.com/AllVeryGoods" target="_blank" rel="noopener noreferrer">@AllVeryGoods</a>
+<a href="https://www.instagram.com/allverygoods/" target="_blank" rel="noopener noreferrer">Instagram</a>
+<a href="https://allverygoods.com/" target="_blank" rel="noopener noreferrer">allverygoods.com</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/luckyyoubyaokostudio" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/AllVeryGoods" target="_blank" rel="noopener noreferrer">@AllVeryGoods</a><a class="pill" href="https://www.instagram.com/allverygoods/" target="_blank" rel="noopener noreferrer">Instagram</a><a class="pill" href="https://allverygoods.com/" target="_blank" rel="noopener noreferrer">allverygoods.com</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-arjen-roos">
+<div class="card-art"><img src="assets/works/arjen-roos-1.jpg" alt="Artwork by Arjen Roos" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/arjen-roos.jpg" alt="Arjen Roos" loading="lazy" decoding="async">
+          <h3>Arjen Roos</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p><em>Arjen </em> is a self-thought photographer, creative re-toucher and 3d modeller. He was photographing for many years before starting with model-photography in 2007. Since 2008 he does photoshoots from his home-studio in Berkel &amp; Rodenrijs in The Netherlands. Photography and re-touching is done next to his day-time job as a respiratory technician in the “Franciscus Gasthuis” hospital in Rotterdam.<br><br>Collections:<br>🌐<a href="https://foundation.app/@ArjenRoos" target="_blank" rel="noopener noreferrer">Foundation · ArjenRoos</a></p>
+<a href="https://twitter.com/ArjenRoosWork" target="_blank" rel="noopener noreferrer">@ArjenRoosWork</a>
+<a href="https://www.instagram.com/arjen_roos/" target="_blank" rel="noopener noreferrer">Instagram</a>
+<a href="https://linktr.ee/arjenroos" target="_blank" rel="noopener noreferrer">linktr.ee/arjenroos</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://foundation.app/@ArjenRoos" target="_blank" rel="noopener noreferrer">Foundation</a><a class="pill" href="https://twitter.com/ArjenRoosWork" target="_blank" rel="noopener noreferrer">@ArjenRoosWork</a><a class="pill" href="https://www.instagram.com/arjen_roos/" target="_blank" rel="noopener noreferrer">Instagram</a><a class="pill" href="https://linktr.ee/arjenroos" target="_blank" rel="noopener noreferrer">Linktree</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-caroline-harroe">
+<div class="card-art"><img src="assets/works/caroline-harroe-1.jpg" alt="Artwork by Caroline Harroe" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/caroline-harroe.jpg" alt="Caroline Harroe" loading="lazy" decoding="async">
+          <h3>Caroline Harroe</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p>A mum to 5 (twins x 2), a UK leader in Mental Health and an artist. Making sense of emotional experiences through art &amp; NFTs. <br><em>The FierceFemales</em> <em>Collection</em> &#8211; A collection of bold female creations to explore and represent the strength of women. <br><em>The Hope and Colour Collection</em> is aptly titled for vibrant colours thru abstract exploratory art.<br><br>Collection:<br>🌐 <a href="https://opensea.io/collection/fiercefemales-1" target="_blank" rel="noopener noreferrer">OpenSea · fiercefemales-1</a><br>🌐 <a href="https://opensea.io/collection/the-hope-and-colour-collection" target="_blank" rel="noopener noreferrer">OpenSea · the-hope-and-colour-collection</a></p>
+<p></p>
+<p></p>
+<a href="https://twitter.com/lookingoutandin" target="_blank" rel="noopener noreferrer">@lookingoutandin</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/fiercefemales-1" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/lookingoutandin" target="_blank" rel="noopener noreferrer">@lookingoutandin</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-deva">
+<div class="card-art"><img src="assets/works/deva-1.jpg" alt="Artwork by Deva" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/deva.jpg" alt="Deva" loading="lazy" decoding="async">
+          <h3>Deva</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p><em>Deva</em> celebrates an Ode to Life, Women, Divine Feminine and Motherhood<br><em>Inner Child from the Mothers of Light collection</em> : There is a Mother within each of us who has to take care of our Inner Child.<br>Recognizing our suffering is already the beginning of healing. Welcome it, understand it, wrap it in Consciousness, in Love. Free our true Being and become a Mother of Light for ourselves, our Children and others.<br><br>Collections:<br>🌐 <a href="https://foundation.app/collection/mothersoflight" target="_blank" rel="noopener noreferrer">Foundation · collection/mothersoflight</a></p>
+<a href="https://twitter.com/nftdeva" target="_blank" rel="noopener noreferrer">@nftdeva</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://foundation.app/collection/mothersoflight" target="_blank" rel="noopener noreferrer">Foundation</a><a class="pill" href="https://twitter.com/nftdeva" target="_blank" rel="noopener noreferrer">@nftdeva</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-dila">
+<div class="card-art"><img src="assets/works/dila-1.jpg" alt="Artwork by dila" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/dila.jpg" alt="dila" loading="lazy" decoding="async">
+          <h3>dila</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p><em>dila </em> is a Mom, Wife and Artist. Currently procuring and creating NFTs. She draws when her daughter is sleeping.<br><em>Art By NF</em> is a series of 1/1 derivative fan art based on projects such as World of Women, Boss Beauties and DeadFellaz<br><br>Collection:<br>🌐 <a href="https://opensea.io/collection/art-by-nf" target="_blank" rel="noopener noreferrer">OpenSea · art-by-nf</a></p>
+<a href="https://twitter.com/itsdilahhh" target="_blank" rel="noopener noreferrer">@itsdilahhh</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/art-by-nf" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/itsdilahhh" target="_blank" rel="noopener noreferrer">@itsdilahhh</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-dionne">
+<div class="card-art"><img src="assets/works/dionne-1.jpg" alt="Artwork by Dionne" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/dionne.jpg" alt="Dionne" loading="lazy" decoding="async">
+          <h3>Dionne</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p>Dionne is an illustrator, fashion designer and artist, and the creator of <em>Dolls versus Gods</em> &#8211; a limited genesis collection. Every doll has her own special description that may give you a sense of spiritual enlightenment.<br><br>Collection:<br>🌐 <a href="https://opensea.io/collection/dollsversusgods" target="_blank" rel="noopener noreferrer">OpenSea · dollsversusgods</a></p>
+<a href="https://twitter.com/dionne_ys" target="_blank" rel="noopener noreferrer">@dionne_ys</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/dollsversusgods" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/dionne_ys" target="_blank" rel="noopener noreferrer">@dionne_ys</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-eislyn">
+<div class="card-art"><img src="assets/works/eislyn-1.jpg" alt="Artwork by Eislyn" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/eislyn.jpg" alt="Eislyn" loading="lazy" decoding="async">
+          <h3>Eislyn</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p>Pronounced ASH-lin. Having fun with NFTs and interactive storytelling<br><em>No FOMO NYC After Party:</em>  artwork was created as part of a week-long twitter event held by Eislyn.eth to fight FOMO during NFT NYC 2022. Hundreds of people showed up, there were tens of thousands of interactions<br><em>Eislyn&#8217;s Dreams</em> : my dreams have become much more vivid ever since my Dad disappeared&#8230; I feel like my dreams have been pulling me to other worlds&#8230; I consider all NFT holders a close friend in this journey<br><br>Collections:<br>🌐 <a href="https://foundation.app/collection/unvrs-d501?sortOrder=DEFAULT" target="_blank" rel="noopener noreferrer">Foundation · collection/unvrs-d501</a><br>🌐 <a href="https://opensea.io/collection/eislyndreams" target="_blank" rel="noopener noreferrer">OpenSea · eislyndreams</a></p>
+<a href="https://twitter.com/eislyn_eth" target="_blank" rel="noopener noreferrer">@eislyn_eth</a>
+<a href="https://korus.world" target="_blank" rel="noopener noreferrer">korus.world</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://foundation.app/collection/unvrs-d501?sortOrder=DEFAULT" target="_blank" rel="noopener noreferrer">Foundation</a><a class="pill" href="https://opensea.io/collection/eislyndreams" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/eislyn_eth" target="_blank" rel="noopener noreferrer">@eislyn_eth</a><a class="pill" href="https://korus.world" target="_blank" rel="noopener noreferrer">korus.world</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-elaine">
+<div class="card-art"><img src="assets/works/elaine-1.jpg" alt="Artwork by Elaine" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/elaine.jpg" alt="Elaine" loading="lazy" decoding="async">
+          <h3>Elaine</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p><em>Elaine</em> is an award-winning art director and photographer. She was born and raised in Hong Kong, spent time in Melbourne, Chicago, SF, and now based in Sydney.<br><em>Echos of Mine</em> is her favourite photo shot to date to celebrate her 31st birthday. In her own words, &#8220;For my photography, location is really important. I love using cities as backdrop, and existing objects as props. I hope this photo is a reflection of that.&#8221;<br><br>Collection:<br>🌐 <a href="https://foundation.app/@lielaine" target="_blank" rel="noopener noreferrer">Foundation · lielaine</a></p>
+<a href="https://twitter.com/lielaineyl" target="_blank" rel="noopener noreferrer">@lielaineyl</a>
+<a href="http://instagram.com/lielaine" target="_blank" rel="noopener noreferrer">Instagram</a>
+<a href="http://www.elaine.li/" target="_blank" rel="noopener noreferrer">elaine.li</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://foundation.app/@lielaine" target="_blank" rel="noopener noreferrer">Foundation</a><a class="pill" href="https://twitter.com/lielaineyl" target="_blank" rel="noopener noreferrer">@lielaineyl</a><a class="pill" href="http://instagram.com/lielaine" target="_blank" rel="noopener noreferrer">Instagram</a><a class="pill" href="http://www.elaine.li/" target="_blank" rel="noopener noreferrer">elaine.li</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-ethspresso">
+<div class="card-art"><img src="assets/works/ethspresso-1.jpg" alt="Artwork by Ethspresso" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/ethspresso.jpg" alt="Ethspresso" loading="lazy" decoding="async">
+          <h3>Ethspresso</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p>Ethspresso &#8211; an art collector, investor, trader and creator. In that order. Big fan of fxhash for generative art, and ZenAcademy for learning about the NFT space.<br><em>Exploding Stars Vol. 2</em> &#8211; asks &#8216;What does a star look like when it explodes?&#8217; Perhaps seen only as dots from far away, but maybe they actually look like this. Collection of 32 stars in Vol. 1 and 16 new stars here in Vol.2 all 1/1s, made with Silk. <br><br>Collections:<br>🌐 <a href="https://opensea.io/collection/exploding-stars-vol2" target="_blank" rel="noopener noreferrer">OpenSea · exploding-stars-vol2</a><br>🌐 <a href="https://objkt.com/profile/ethspresso/created" target="_blank" rel="noopener noreferrer">objkt.com/created</a></p>
+<a href="https://twitter.com/ethspresso" target="_blank" rel="noopener noreferrer">@ethspresso</a>
+<a href="https://objkt.com/profile/ethspresso/created" target="_blank" rel="noopener noreferrer">objkt.com/created</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/exploding-stars-vol2" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://objkt.com/profile/ethspresso/created" target="_blank" rel="noopener noreferrer">objkt</a><a class="pill" href="https://twitter.com/ethspresso" target="_blank" rel="noopener noreferrer">@ethspresso</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-hal">
+<div class="card-art"><img src="assets/works/hal-1.jpg" alt="Artwork by HAL" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/hal.jpg" alt="HAL" loading="lazy" decoding="async">
+          <h3>HAL</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p><em>HAL </em> is an astrophotographer whose enduring interest in the night sky began as a child and grew into an obsession with all things space. She went on to study astrophysics, learning observational techniques alongside theory, and eventually becoming a teacher. <br><br>Her genesis NFT collection, <em> Visions of Our Local Star</em>, is an exploration of the wondrous and dynamic nature of the Sun.</p>
+<p><br>Collections:<br>🌐 <a href="https://opensea.io/collection/visions-of-our-local-star" target="_blank" rel="noopener noreferrer">OpenSea · visions-of-our-local-star</a></p>
+<a href="https://twitter.com/42ordinarymice" target="_blank" rel="noopener noreferrer">@42ordinarymice</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/visions-of-our-local-star" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/42ordinarymice" target="_blank" rel="noopener noreferrer">@42ordinarymice</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-jacknetic">
+<div class="card-art"><img src="assets/works/jacknetic-1.jpg" alt="Artwork by jacknetic" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/jacknetic.jpg" alt="jacknetic" loading="lazy" decoding="async">
+          <h3>jacknetic</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p>jacknetic is a ghanaian artist and design director blending hand-made, traditional art techniques with digital mediums. she paints women in a fluid style and focuses on capturing major themes around innocence, seduction and mystery in her work.<br><br><em>water magic</em> : follow the feathers to uncover old ghosts 〰🪶〰. fluid ladies with chill vibes, a watercolor collection <br><em>children of muses</em> : the sources of knowledge, poetry, science and art embodied through the muses. an airy collection.<br><em>you are the universe</em> : inspired by the uniqueness of each person. It came like a revelation. We are not only a part of the Universe, each of us is the Universe. Each stage of work on the picture came into my mind like a flash. This art will help you to know your inner strength and potential.<br><br>Collections:<br>🌐 <a href="https://opensea.io/collection/water-magic" target="_blank" rel="noopener noreferrer">OpenSea · water-magic</a><br>🌐 <a href="https://opensea.io/collection/children-of-muses" target="_blank" rel="noopener noreferrer">OpenSea · children-of-muses</a><br>🌐 <a href="https://foundation.app/@jacknetic" target="_blank" rel="noopener noreferrer">Foundation · jacknetic</a></p>
+<a href="https://twitter.com/____jacklyn" target="_blank" rel="noopener noreferrer">@____jacklyn</a>
+<a href="https://linktr.ee/jacknetic_" target="_blank" rel="noopener noreferrer">linktr.ee/jacknetic_</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/water-magic" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://foundation.app/@jacknetic" target="_blank" rel="noopener noreferrer">Foundation</a><a class="pill" href="https://twitter.com/____jacklyn" target="_blank" rel="noopener noreferrer">@____jacklyn</a><a class="pill" href="https://linktr.ee/jacknetic_" target="_blank" rel="noopener noreferrer">Linktree</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-joy-jo">
+<div class="card-art"><img src="assets/works/joy-jo-1.jpg" alt="Artwork by Joy Jo" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/joy-jo.jpg" alt="Joy Jo" loading="lazy" decoding="async">
+          <h3>Joy Jo</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p><em>Joy Jo</em> is a professional abstract expressionist who creates and collects physical &amp; NFTart. She was invited to KMI Artist Residency in 2011, in Germany. She has a musical career as a vocalist as well. She performed as the main vocalist of a hard rock band, and also released her single album called &#8216;To&#8217; in 2014. Now she expands her musical talents in NFT, by making audiovisual works reinterpreting her paintings and via collaborations with many artists in a wide musical realm.<br><br><em>Abstract Lights:</em> For this collection, I drew abstract images using lines that emit light, objects that contain light, and everything we perceive as &#8216;light&#8217;. I hope this collection will bring more light to your daily life.<br><em>December In France</em> was created to share with you the emotions, impressions, and changes in thoughts I experienced during a trip to various cities in France in December 2021. The twinkle of Christmas that filled France will continue every year and will last forever and at the same time will shine in my heart.<br><br>Collections:<br>🌐 <a href="https://opensea.io/collection/abstract-lights-by-joyjo-eth" target="_blank" rel="noopener noreferrer">OpenSea · abstract-lights-by-joyjo-eth</a><br>🌐 <a href="https://opensea.io/collection/dec-in-fr" target="_blank" rel="noopener noreferrer">OpenSea · dec-in-fr</a></p>
+<a href="https://twitter.com/ArtistJoyJo" target="_blank" rel="noopener noreferrer">@ArtistJoyJo</a>
+<a href="https://solo.to/artistjoyjo" target="_blank" rel="noopener noreferrer">solo.to/artistjoyjo</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/abstract-lights-by-joyjo-eth" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/ArtistJoyJo" target="_blank" rel="noopener noreferrer">@ArtistJoyJo</a><a class="pill" href="https://solo.to/artistjoyjo" target="_blank" rel="noopener noreferrer">solo.to</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-jprittee">
+<div class="card-art"><img src="assets/works/jprittee-1.jpg" alt="Artwork by jprittee" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/jprittee.jpg" alt="jprittee" loading="lazy" decoding="async">
+          <h3>jprittee</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p>Designer &amp; 3D illustrator on a mission to make Web3 a more beautiful and inclusive place. Collections by <a href="https://twitter.com/jpritteeNFT" target="_blank" rel="noopener noreferrer">@jprittee</a> are part of a larger body of work designed to support and celebrate LGBTQIA+, BIPOC &amp; women creators in Web3.<br><br><em>Fragile Flora</em> &#8211; delicate, vibrant florals symbolize the beautiful and diverse individuals that are often overlooked in our society.<br><em>Fragile Friends</em> &#8211; delicate, vibrant, and lovable symbols of joy that represent the beautifully diverse individuals.<br><em>Delicate Doodles</em> &#8211; Symbols of hope, growth, joy, and diversity. Created with love to bring a smile to your face.<br><br>Collections:<br>🌐 <a href="https://foundation.app/collection/fragile-flora" target="_blank" rel="noopener noreferrer">Foundation · collection/fragile-flora</a><br>🌐<a href="https://opensea.io/collection/the-hope-and-colour-collection" target="_blank" rel="noopener noreferrer"> </a><a href="https://opensea.io/collection/fragile-friends" target="_blank" rel="noopener noreferrer">OpenSea · fragile-friends</a><br>🌐 <a href="https://opensea.io/collection/delicate-doodles" target="_blank" rel="noopener noreferrer">OpenSea · delicate-doodles</a></p>
+<p></p>
+<p></p>
+<a href="https://www.jprittee.com/" target="_blank" rel="noopener noreferrer">jprittee.com</a>
+<a href="https://twitter.com/jpritteeNFT" target="_blank" rel="noopener noreferrer">@jpritteeNFT</a>
+<a href="https://www.instagram.com/jprittee.doodles/" target="_blank" rel="noopener noreferrer">Instagram</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://twitter.com/jpritteeNFT" target="_blank" rel="noopener noreferrer">@jpritteeNFT</a><a class="pill" href="https://foundation.app/collection/fragile-flora" target="_blank" rel="noopener noreferrer">Foundation</a><a class="pill" href="https://opensea.io/collection/the-hope-and-colour-collection" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://www.jprittee.com/" target="_blank" rel="noopener noreferrer">jprittee.com</a><a class="pill" href="https://www.instagram.com/jprittee.doodles/" target="_blank" rel="noopener noreferrer">Instagram</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-lorr-eth-x-masonnft-eth">
+<div class="card-art"><img src="assets/works/lorr-eth-x-masonnft-eth-1.jpg" alt="Artwork by lorr.eth X masonNFT.eth" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/lorr-eth-x-masonnft-eth.jpg" alt="lorr.eth X masonNFT.eth" loading="lazy" decoding="async">
+          <h3>lorr.eth X masonNFT.eth</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p>lorr.eth: Community Coordinator + Head Curator <a href="https://twitter.com/thehugxyz" target="_blank" rel="noopener noreferrer">@thehugxyz</a><br>masonNFT.eth: new NFT boy</p>
+<p><em>sonic smileys</em> : a music + moving art collaboration between lorrNFT n m4s0nNFT 🙂 <br><br>lorr.eth Collections:<br>🌐 <a href="http://opensea.io/lorrNFT" target="_blank" rel="noopener noreferrer">opensea.io/lorrNFT</a></p>
+<a href="https://twitter.com/lorrNFT" target="_blank" rel="noopener noreferrer">@lorrNFT</a>
+<p></p>
+<p>masonNFT.eth Collections:<br>🌐<a href="https://opensea.io/m4s0nNFT" target="_blank" rel="noopener noreferrer">opensea.io/m4s0nNFT</a></p>
+<a href="https://twitter.com/m4s0nNFT" target="_blank" rel="noopener noreferrer">@m4s0nNFT</a>
+<p></p>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://twitter.com/thehugxyz" target="_blank" rel="noopener noreferrer">@thehugxyz</a><a class="pill" href="http://opensea.io/lorrNFT" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/lorrNFT" target="_blank" rel="noopener noreferrer">@lorrNFT</a><a class="pill" href="https://twitter.com/m4s0nNFT" target="_blank" rel="noopener noreferrer">@m4s0nNFT</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-mallovv">
+<div class="card-art"><img src="assets/works/mallovv-1.jpg" alt="Artwork by Mallovv" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/mallovv.jpg" alt="Mallovv" loading="lazy" decoding="async">
+          <h3>Mallovv</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p><em>Mallovv </em> is a creative director and designer based in South-East Asia who specializes in social design tech solutions and is passionate about photography, digital art and community building.<br><br><em>Matter 1</em> is a beautiful moving art piece blending photography with animated 3D effects.<br><em>Matter Heads</em> is a collection of hand crafted NFTs combining photography and 3D objects on heads of people<br><br>Collection:<br>🌐<a href="https://foundation.app/@mallovv/foundation/131723" target="_blank" rel="noopener noreferrer">Foundation · mallovv/foundation/131723</a><br>🌐<a href="https://opensea.io/collection/matter-heads" target="_blank" rel="noopener noreferrer">OpenSea · matter-heads</a></p>
+<a href="https://twitter.com/mallovv_" target="_blank" rel="noopener noreferrer">@mallovv_</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://foundation.app/@mallovv/foundation/131723" target="_blank" rel="noopener noreferrer">Foundation</a><a class="pill" href="https://opensea.io/collection/matter-heads" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/mallovv_" target="_blank" rel="noopener noreferrer">@mallovv_</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-maya">
+<div class="card-art"><img src="assets/works/maya-1.jpg" alt="Artwork by Maya" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/maya.jpg" alt="Maya" loading="lazy" decoding="async">
+          <h3>Maya</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p><em>Maya </em>&#8211; 13 y/o Korean-American artist, author &amp; storybook illustrator on a mission to make positive impact • Together with Mom on this account<br><br>Featured Artwork : Global Angel<br><em>Global Angel</em> is inspired by the angel of hopefulness on loan by @meta_angels and created in honor of my late mentor who believed in me. This artwork expresses my longing for the emerging generation to shine our lights bright creating more opportunities for community and unity. I am a 13 y/o Asian American artist currently learning how to embrace my heritage and identity while learning about the world around me. I wholeheartedly believe becoming a global citizen is the way forward to a brighter and better future, abundant with hope.<br><br>Collections:<br>🌐 <a href="https://linktr.ee/MayaCreates" target="_blank" rel="noopener noreferrer">linktr.ee/MayaCreates</a></p>
+<a href="https://twitter.com/GoGoGiraffeNFT" target="_blank" rel="noopener noreferrer">@GoGoGiraffeNFT</a>
+<a href="https://linktr.ee/MayaCreates" target="_blank" rel="noopener noreferrer">linktr.ee/MayaCreates</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://linktr.ee/MayaCreates" target="_blank" rel="noopener noreferrer">Linktree</a><a class="pill" href="https://twitter.com/GoGoGiraffeNFT" target="_blank" rel="noopener noreferrer">@GoGoGiraffeNFT</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-maayan-mush">
+<div class="card-art"><img src="assets/works/maayan-mush-1.jpg" alt="Artwork by Ma’ayan (Mush)" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/maayan-mush.jpg" alt="Ma’ayan (Mush)" loading="lazy" decoding="async">
+          <h3>Ma’ayan (Mush)</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p><em>Ma&#8217;ayan (Mush) </em> is a senior algorithm engineer @meta focusing on computer vision, deep learning, and other cool AI things.<br><em>Lights By Mush</em> is a collection of unique generative coding art of Videos and Images. &#8220;There is an infinite number of 3D light scenes generated using code in a combination of objects, colors, and animation.&#8221;<br><br>Collection:<br>🌐 <a href="https://opensea.io/collection/lights-by-mush-official" target="_blank" rel="noopener noreferrer">OpenSea · lights-by-mush-official</a></p>
+<a href="https://twitter.com/LightsNft" target="_blank" rel="noopener noreferrer">@LightsNft</a>
+<a href="https://www.lightsbymush.com/" target="_blank" rel="noopener noreferrer">lightsbymush.com</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/lights-by-mush-official" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/LightsNft" target="_blank" rel="noopener noreferrer">@LightsNft</a><a class="pill" href="https://www.lightsbymush.com/" target="_blank" rel="noopener noreferrer">lightsbymush.com</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-montalut">
+<div class="card-art"><img src="assets/works/montalut-1.jpg" alt="Artwork by Montalut" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/montalut.jpg" alt="Montalut" loading="lazy" decoding="async">
+          <h3>Montalut</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p>Montalut is an Artist from the Philippines. A self-described &#8220;Mom | Gatherer&#8221;, exploring NFTs for art and community. <br><em>Everything Passes:</em> Paintings exploring passing moments in life, the big and small of the everyday: our bodies, quiet victories, relationships up close, beauty around us. Because what is ordinary is actually extraordinary.<br><br>Collection:<br>🌐 <a href="https://opensea.io/collection/everything-passes" target="_blank" rel="noopener noreferrer">OpenSea · everything-passes</a></p>
+<a href="https://twitter.com/montalut" target="_blank" rel="noopener noreferrer">@montalut</a>
+<a href="https://www.instagram.com/montalut_/" target="_blank" rel="noopener noreferrer">Instagram</a>
+<a href="https://montalut.com/" target="_blank" rel="noopener noreferrer">montalut.com</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/everything-passes" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/montalut" target="_blank" rel="noopener noreferrer">@montalut</a><a class="pill" href="https://www.instagram.com/montalut_/" target="_blank" rel="noopener noreferrer">Instagram</a><a class="pill" href="https://montalut.com/" target="_blank" rel="noopener noreferrer">montalut.com</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-nadia">
+<div class="card-art"><img src="assets/works/nadia-1.jpg" alt="Artwork by Nadia" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/nadia.jpg" alt="Nadia" loading="lazy" decoding="async">
+          <h3>Nadia</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p>Nadia is an NFT artist who&#8217;s a lover of drawing &amp; coffee<br><br><em>Dune Inspiration</em> : A collection of 4 unique artworks created by Nadia &#8211; inspired by the movie Dune and the mystery of the desert.<br><br>Collections:<br>🌐 <a href="https://opensea.io/collection/dune-inspiration" target="_blank" rel="noopener noreferrer">OpenSea · dune-inspiration</a></p>
+<a href="https://twitter.com/NadiasStudio" target="_blank" rel="noopener noreferrer">@NadiasStudio</a>
+<a href="https://linktr.ee/nadiasstudio" target="_blank" rel="noopener noreferrer">linktr.ee/nadiasstudio</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/dune-inspiration" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/NadiasStudio" target="_blank" rel="noopener noreferrer">@NadiasStudio</a><a class="pill" href="https://linktr.ee/nadiasstudio" target="_blank" rel="noopener noreferrer">Linktree</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-olaf-hoppe">
+<div class="card-art"><img src="assets/works/olaf-hoppe-1.jpg" alt="Artwork by Olaf + Johannes Hoppe" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/olaf-hoppe.jpg" alt="Olaf + Johannes Hoppe" loading="lazy" decoding="async">
+          <h3>Olaf + Johannes Hoppe</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p>A father (Olaf) and son (Johannes) team from Germany, blending together traditional woodcuts / paintings and modern animation tech to produce masterful NFT pieces.<br><em>Woodcuts:</em> The authentic woodcut with several plates is a very time-consuming and difficult process to produce a coloured print. For the numerous subtle colour nuances, the artist Olaf Hoppe had to cut up to seven different wooden plates and print them on top of each other with millimetre precision. <br><br>Collection:<br>🌐 <a href="https://opensea.io/collection/olaf-hoppe-woodcuts" target="_blank" rel="noopener noreferrer">OpenSea · olaf-hoppe-woodcuts</a></p>
+<a href="https://twitter.com/HausHoppe" target="_blank" rel="noopener noreferrer">@HausHoppe</a>
+<a href="https://www.instagram.com/haushoppe/" target="_blank" rel="noopener noreferrer">Instagram</a>
+<a href="https://haushoppe.art/" target="_blank" rel="noopener noreferrer">haushoppe.art</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/olaf-hoppe-woodcuts" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/HausHoppe" target="_blank" rel="noopener noreferrer">@HausHoppe</a><a class="pill" href="https://www.instagram.com/haushoppe/" target="_blank" rel="noopener noreferrer">Instagram</a><a class="pill" href="https://haushoppe.art/" target="_blank" rel="noopener noreferrer">haushoppe.art</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-pippo">
+<div class="card-art"><img src="assets/works/pippo-1.jpg" alt="Artwork by Pippo" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/pippo.jpg" alt="Pippo" loading="lazy" decoding="async">
+          <h3>Pippo</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p>Pippo Pippolino is an Austrian NFT enthusiast. <br><em>Nature meets the city</em> is Pippo&#8217;s genesis collection, which features <em>The forest meets Paris,</em> an artistic combination of a photograph of Paris taken on the &#8220;Arc de Triomphe de l’Étoile“ with a picture of a forest path taken in Austria<br>Collection:<br>🌐 <a href="https://foundation.app/@PPippolino" target="_blank" rel="noopener noreferrer">Foundation · PPippolino</a></p>
+<a href="https://twitter.com/PPippolino" target="_blank" rel="noopener noreferrer">@PPippolino</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://foundation.app/@PPippolino" target="_blank" rel="noopener noreferrer">Foundation</a><a class="pill" href="https://twitter.com/PPippolino" target="_blank" rel="noopener noreferrer">@PPippolino</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-playgrdstar">
+<div class="card-art"><img src="assets/works/playgrdstar-1.jpg" alt="Artwork by playgrdstar" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/playgrdstar.jpg" alt="playgrdstar" loading="lazy" decoding="async">
+          <h3>playgrdstar</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p><em>playgrdstar</em> is a professional specialising in engineering, quantitative finance, capital policy-making and model risk audit in finance. Currently on a PhD (in Computer Science) journey.<br><em>Whimsical Ether Reality</em>: Random detailed pieces depict lost spaces and things. <br><em>Ethereal Attractors</em>: <em>Each of these pieces is a programmatically generated video loop of the strange attractors with different energy levels, based on different artistically chosen equations, frequencies and coefficients.</em><br><br>Collection:<br>🌐 <a href="https://opensea.io/collection/whimsicalethereality" target="_blank" rel="noopener noreferrer">OpenSea · whimsicalethereality</a><br>🌐 <a href="https://opensea.io/collection/ethereal-attractors" target="_blank" rel="noopener noreferrer">OpenSea · ethereal-attractors</a></p>
+<a href="https://twitter.com/playgrdstar" target="_blank" rel="noopener noreferrer">@playgrdstar</a>
+<a href="https://playgrd.com/" target="_blank" rel="noopener noreferrer">playgrd.com</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/whimsicalethereality" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/playgrdstar" target="_blank" rel="noopener noreferrer">@playgrdstar</a><a class="pill" href="https://playgrd.com/" target="_blank" rel="noopener noreferrer">playgrd.com</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-simran">
+<div class="card-art"><img src="assets/works/simran-1.jpg" alt="Artwork by Simran" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/simran.jpg" alt="Simran" loading="lazy" decoding="async">
+          <h3>Simran</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p>Simran is a Bay Area artist whose works revolve around identity, specifically in the context of the South Asian diaspora. The collection <em>RAANI </em> asks the question &#8211; Who are we when we escape our inhibitions and surrender to the collision of two cultures? RAANI is a collection of five individuals struggling to fortify the harmony between the cosmos and the self.<br><br>Collection:<br>🌐 <a href="https://opensea.io/collection/raani" target="_blank" rel="noopener noreferrer">OpenSea · raani</a></p>
+<a href="https://twitter.com/spelt_melk" target="_blank" rel="noopener noreferrer">@spelt_melk</a>
+<a href="https://www.instagram.com/simran_sarin/?hl=en" target="_blank" rel="noopener noreferrer">Instagram</a>
+<a href="https://linktr.ee/simransarin" target="_blank" rel="noopener noreferrer">linktr.ee/simransarin</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/raani" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/spelt_melk" target="_blank" rel="noopener noreferrer">@spelt_melk</a><a class="pill" href="https://www.instagram.com/simran_sarin/?hl=en" target="_blank" rel="noopener noreferrer">Instagram</a><a class="pill" href="https://linktr.ee/simransarin" target="_blank" rel="noopener noreferrer">Linktree</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-sylvie-vo">
+<div class="card-art"><img src="assets/works/sylvie-vo-1.jpg" alt="Artwork by Studio Sylvo" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/sylvie-vo.jpg" alt="Studio Sylvo" loading="lazy" decoding="async">
+          <h3>Studio Sylvo</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p><em>Studio Sylvo</em> is a self-taught artist living in California, USA. Her collection <em>Daily Practice 2022</em> is filled with beautiful watercolor paintings, one for each day of the year. Be sure to check out her behind-the-scenes <a href="https://twitter.com/studioSYLVO/status/1499243249537470468" target="_blank" rel="noopener noreferrer">timelapse of how the paintings are made</a> as well.<br><br>Collection:<br>🌐 <a href="https://opensea.io/collection/daily-practice-2022" target="_blank" rel="noopener noreferrer">OpenSea · daily-practice-2022</a></p>
+<a href="https://twitter.com/studioSYLVO" target="_blank" rel="noopener noreferrer">@studioSYLVO</a>
+<a href="https://www.instagram.com/sylbiee" target="_blank" rel="noopener noreferrer">Instagram</a>
+<a href="http://studiosylvo.com/" target="_blank" rel="noopener noreferrer">studiosylvo.com</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://twitter.com/studioSYLVO/status/1499243249537470468" target="_blank" rel="noopener noreferrer">@studioSYLVO</a><a class="pill" href="https://opensea.io/collection/daily-practice-2022" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://www.instagram.com/sylbiee" target="_blank" rel="noopener noreferrer">Instagram</a><a class="pill" href="http://studiosylvo.com/" target="_blank" rel="noopener noreferrer">studiosylvo.com</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-tan-chiang-kiong">
+<div class="card-art"><img src="assets/works/tan-chiang-kiong-1.jpg" alt="Artwork by Tan Chiang Kiong" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/tan-chiang-kiong.jpg" alt="Tan Chiang Kiong" loading="lazy" decoding="async">
+          <h3>Tan Chiang Kiong</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p><em>Tan Chiang Kiong </em> is traditional media artist based in Penang, Malaysia. <br>His genesis NFT collection focuses on his mastery of watercolours and acrylic, creating paintings inspired by nature and still life. <br><br>His art is featured in the Special Exhibit: Colours of Time<br><br>Collection:<br>🌐 <a href="https://opensea.io/collection/tck-genesis" target="_blank" rel="noopener noreferrer">OpenSea · tck-genesis</a></p>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/tck-genesis" target="_blank" rel="noopener noreferrer">OpenSea</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-thari">
+<div class="card-art"><img src="assets/works/thari-1.jpg" alt="Artwork by Thari" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/thari.jpg" alt="Thari" loading="lazy" decoding="async">
+          <h3>Thari</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p><em>Thari </em>-A tender modernist fairy tale • (she/her) • Visual Artist. <br><br><em>Ode to Dreams </em> is a collection of renaissance-yet-vintage vibrant colors and dreamy illustrations by Opuscula. A sweet serenade to our shared belonging.<br><em>Opuscula</em> is a tender modernist fairy tale | a food diary.</p>
+<p>Collections:<br>🌐 <a href="https://foundation.app/@opuscula" target="_blank" rel="noopener noreferrer">Foundation · opuscula</a><br>🌐 <a href="https://opensea.io/collection/ode-by-opuscula" target="_blank" rel="noopener noreferrer">OpenSea · ode-by-opuscula</a><br>🌐 <a href="https://knownorigin.io/opuscula" target="_blank" rel="noopener noreferrer">knownorigin.io/opuscula</a></p>
+<a href="https://twitter.com/opus_cula" target="_blank" rel="noopener noreferrer">@opus_cula</a>
+<a href="https://linktr.ee/opuscula" target="_blank" rel="noopener noreferrer">linktr.ee/opuscula</a>
+<p></p>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://foundation.app/@opuscula" target="_blank" rel="noopener noreferrer">Foundation</a><a class="pill" href="https://opensea.io/collection/ode-by-opuscula" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://knownorigin.io/opuscula" target="_blank" rel="noopener noreferrer">KnownOrigin</a><a class="pill" href="https://twitter.com/opus_cula" target="_blank" rel="noopener noreferrer">@opus_cula</a><a class="pill" href="https://linktr.ee/opuscula" target="_blank" rel="noopener noreferrer">Linktree</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-unickate">
+<div class="card-art"><img src="assets/works/unickate-1.jpg" alt="Artwork by Unickate" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/unickate.jpg" alt="Unickate" loading="lazy" decoding="async">
+          <h3>Unickate</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p><em>Unickate, </em> a designer and product illustrator, emphasizes female individualism and celebrates womanhood in her art. <br><br><em>Unickate&#8217;s &#8220;The Florist&#8217;s&#8221; collection </em> is the very first flower shop on the blockchain and has been inspired by flowers from Ukraine. <em> </em><br><em>Womanhood: </em> this collection is a story about self-love. It&#8217;s about taking care of ourselves without stigmatising our bodies. It&#8217;s about body positivity and how everything begins in the mind. It reminds us how to look at ourselves in a new way.</p>
+<p>Collections:<br>🌐 <a href="https://opensea.io/collection/womanhoodnft" target="_blank" rel="noopener noreferrer">OpenSea · womanhoodnft</a><br>🌐 <a href="https://opensea.io/collection/theflorists" target="_blank" rel="noopener noreferrer">OpenSea · theflorists</a><br>🌐 <a href="https://foundation.app/@unickate" target="_blank" rel="noopener noreferrer">Foundation · unickate</a></p>
+<a href="https://twitter.com/unickate" target="_blank" rel="noopener noreferrer">@unickate</a>
+<p></p>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/womanhoodnft" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://foundation.app/@unickate" target="_blank" rel="noopener noreferrer">Foundation</a><a class="pill" href="https://twitter.com/unickate" target="_blank" rel="noopener noreferrer">@unickate</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-vow">
+<div class="card-art"><img src="assets/works/vow-1.jpg" alt="Artwork by Vow" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/vow.jpg" alt="Vow" loading="lazy" decoding="async">
+          <h3>Vow</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p>Artist from Thailand, whose work explores female portraits using beautiful watercolours<br><em>Summer Girls</em> &#8211; A collection of ladies painted in a simple, yet gorgeous style capturing the essence of Summer. <br><em>Imaginary Creature Collection</em>: Vow allows her imagination to run wild with her watercolours.<br><br>Her art is featured in the Special Exhibit: Colours of Time<br><br>Collections:<br>🌐 <a href="https://opensea.io/collection/summer-girls-2022" target="_blank" rel="noopener noreferrer">OpenSea · summer-girls-2022</a><br>🌐 <a href="https://opensea.io/collection/untitled-collection-76458228" target="_blank" rel="noopener noreferrer">OpenSea · untitled-collection-76458228</a></p>
+<p></p>
+<p></p>
+<a href="https://twitter.com/VowNft" target="_blank" rel="noopener noreferrer">@VowNft</a>
+<a href="https://linktr.ee/Vownft" target="_blank" rel="noopener noreferrer">linktr.ee/Vownft</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/summer-girls-2022" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/VowNft" target="_blank" rel="noopener noreferrer">@VowNft</a><a class="pill" href="https://linktr.ee/Vownft" target="_blank" rel="noopener noreferrer">Linktree</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-wolf-ram">
+<div class="card-art"><img src="assets/works/wolf-ram-1.jpg" alt="Artwork by Wolf Ram" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/wolf-ram.jpg" alt="Wolf Ram" loading="lazy" decoding="async">
+          <h3>Wolf Ram</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p><em>Wolf Ram</em> is a goldsmith and mixed media artist. <br><em>CARISMA</em> is a collection of only 100 unique 1/1 digital artworks. For Wolf as a goldsmith and artist, carisma of people and art is very important and touches him deeply. He loves carisma in different variations and compositions. <br><br>Collection:<br>🌐 <a href="https://opensea.io/collection/carisma-collection" target="_blank" rel="noopener noreferrer">OpenSea · carisma-collection</a></p>
+<a href="https://twitter.com/Wolf_Ram_Art" target="_blank" rel="noopener noreferrer">@Wolf_Ram_Art</a>
+<a href="https://linktr.ee/Wolf_Ram" target="_blank" rel="noopener noreferrer">linktr.ee/Wolf_Ram</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/carisma-collection" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/Wolf_Ram_Art" target="_blank" rel="noopener noreferrer">@Wolf_Ram_Art</a><a class="pill" href="https://linktr.ee/Wolf_Ram" target="_blank" rel="noopener noreferrer">Linktree</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-yoko">
+<div class="card-art"><img src="assets/works/yoko-1.jpg" alt="Artwork by Yoko" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/yoko.jpg" alt="Yoko" loading="lazy" decoding="async">
+          <h3>Yoko</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p><em>Yoko:</em> Digital artist spreading the joy of reading through <a href="https://twitter.com/search?q=%23NFTs&amp;src=hashtag_click" target="_blank" rel="noopener noreferrer">#NFTs</a></p>
+<p><em>Yoko&#8217;s Book Club</em>:<br>An open collection of digital illustrations of readers inspired by famous literary characters<br><br>Collections:<br>🌐 <a href="https://opensea.io/yokofomo?tab=created_collections" target="_blank" rel="noopener noreferrer">opensea.io/yokofomo</a></p>
+<a href="https://twitter.com/yokofomo" target="_blank" rel="noopener noreferrer">@yokofomo</a>
+<a href="https://www.yokofomo.com/" target="_blank" rel="noopener noreferrer">yokofomo.com</a>
+<p></p>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://twitter.com/search?q=%23NFTs&amp;amp;src=hashtag_click" target="_blank" rel="noopener noreferrer">Twitter</a><a class="pill" href="https://opensea.io/yokofomo?tab=created_collections" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/yokofomo" target="_blank" rel="noopener noreferrer">@yokofomo</a><a class="pill" href="https://www.yokofomo.com/" target="_blank" rel="noopener noreferrer">yokofomo.com</a></div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="artist-yune-wild">
+<div class="card-art"><img src="assets/works/yune-wild-1.jpg" alt="Artwork by Yune Wild" loading="lazy" decoding="async"></div>
+        <div class="card-body">
+          <img class="avatar" src="assets/artists/yune-wild.jpg" alt="Yune Wild" loading="lazy" decoding="async">
+          <h3>Yune Wild</h3>
+          <details>
+            <summary class="more"><span class="lbl-more">Read more</span><span class="lbl-less">Show less</span></summary>
+            <div class="bio"><p>Yune Wild is a painter and digital artist living in the Pacific Northwest. Her <em>Tous Les Jours</em> animated nature scenes and <em>Midcentury Nifties</em> minimalist pieces explore harmony in clean, nifty shapes.<br><br>Collections:<br>🌐 <a href="https://opensea.io/collection/touslesjours" target="_blank" rel="noopener noreferrer">OpenSea · touslesjours</a><br>🌐 <a href="https://opensea.io/collection/midcenturynifties" target="_blank" rel="noopener noreferrer">OpenSea · midcenturynifties</a></p>
+<a href="https://twitter.com/yunewild" target="_blank" rel="noopener noreferrer">Twitter</a>
+<a href="https://www.instagram.com/yune_wild/" target="_blank" rel="noopener noreferrer">Instagram</a>
+<a href="https://linktr.ee/yunewild" target="_blank" rel="noopener noreferrer">linktr.ee/yunewild</a>
+<p></p></div>
+            <div class="pills"><a class="pill" href="https://opensea.io/collection/touslesjours" target="_blank" rel="noopener noreferrer">OpenSea</a><a class="pill" href="https://twitter.com/yunewild" target="_blank" rel="noopener noreferrer">@yunewild</a><a class="pill" href="https://www.instagram.com/yune_wild/" target="_blank" rel="noopener noreferrer">Instagram</a><a class="pill" href="https://linktr.ee/yunewild" target="_blank" rel="noopener noreferrer">Linktree</a></div>
+          </details>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="alt">
+  <div class="wrap">
+    <div class="eyebrow">The Gallery</div>
+    <h2>A floor plan for all cases</h2>
+    <div class="lead"><p>The tour always starts in the middle of the hall. <strong>To the left</strong> (in the virtual west) you will find the works of the artists from the Meta Angels universe. The entrance is surrounded by angels from the Meta Angels NFT collection. <strong>On the right-hand side</strong> (in the virtual east) you will find other independent artists who temporarily exhibit their works in the gallery.</p><p>We hope you enjoy the tour. We recommend using a desktop computer for the best experience.</p></div>
+    <figure class="floorplan">
+      <img src="assets/floorplan.jpg" alt="Floor plan of the virtual exhibition" loading="lazy">
+      <figcaption>Floor plan of the exhibition, March 2022.</figcaption>
+    </figure>
+    <div class="shots">
+      <img src="assets/gallery-1.jpg" alt="View inside the virtual gallery" loading="lazy">
+      <img src="assets/gallery-2.jpg" alt="View inside the virtual gallery" loading="lazy">
+      <img src="assets/gallery-3.jpg" alt="The angel wall in the virtual gallery" loading="lazy">
+    </div>
+    <p style="margin-top:2rem"><a class="btn" href="https://oncyber.io/casperb_collab" target="_blank" rel="noopener noreferrer">Enter Gallery</a></p>
+  </div>
+</section>
+
+<section id="story">
+  <div class="wrap">
+    <div class="eyebrow">About</div>
+    <h2>Angel artists working together</h2>
+    <div class="lead"><p>It all started with a vision of the anonymous NFT collector <a href="https://twitter.com/CryptoCasperB/" target="_blank" rel="noopener noreferrer">CasperB</a>. He saw the talent of the artists in the <a href="https://web.archive.org/web/20220402140352/https://www.metaangelsnft.com/" target="_blank" rel="noopener noreferrer">Meta Angels</a> Discord and contacted some of them. He wanted to exhibit sophisticated NFT art in his virtual gallery to promote young emerging talents.</p><p>One of the first cooperation partners was <a href="https://twitter.com/HausHoppe" target="_blank" rel="noopener noreferrer">Johannes</a> from the HAUS HOPPE art team. Together with CasperB, he wrote <a href="nft-buy/oncyber-galleries-and-collabs/">an article on the gallery software “On Cyber”</a> to make it easier to get started. CasperB kindly used the existing <a href="https://discord.gg/F25NEDuyEb" target="_blank" rel="noopener noreferrer">⭐️ Discord ⭐️</a> to get into dialogue with all the angel artists and to engage in joint collaborations. This website emerged from the collaboration. We also ran regular Twitter Spaces.</p></div>
+  </div>
+</section>
+
+<section id="guides">
+  <div class="wrap">
+    <div class="eyebrow">Guides</div>
+    <h2>How all of this worked</h2>
+    <div class="lead"><p>We wrote guides too. NFTs were genuinely new then, and there was a lot to work out: wallets, marketplaces, what a token actually is, how to look at a collection, and the gallery software this whole thing was built on. Five long articles from 2021 and 2022.</p>
+    <p>Unchanged since.</p></div>
+    <div class="guides">
+      <a class="guide" href="nft-buy/">
+        <h3>Buy NFTs - the complete guide</h3>
+        <p>The long one. Wallets, marketplaces, what a token actually is, and three different reasons people buy.</p>
+      </a>
+      <a class="guide" href="nft-buy/background-knowledge-to-blockchain-token/">
+        <h3>Background knowledge on blockchain tokens</h3>
+        <p>What sits underneath: token standards, and what fungible and non-fungible really mean.</p>
+      </a>
+      <a class="guide" href="nft-buy/nft-analyze-and-evaluate/">
+        <h3>Analyze and evaluate NFT</h3>
+        <p>How to look at a collection before buying into it, and which risks are worth checking.</p>
+      </a>
+      <a class="guide" href="nft-buy/nft-derivatives/">
+        <h3>NFT derivatives</h3>
+        <p>Fractional ownership, indices and the things that look like NFTs but are not.</p>
+      </a>
+      <a class="guide" href="nft-buy/oncyber-galleries-and-collabs/">
+        <h3>On Cyber galleries and Collabs</h3>
+        <p>A walkthrough of the gallery software The Angels&#x27; Wing was built on, written with CasperB.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="credits" class="alt">
+  <div class="wrap">
+    <div class="eyebrow">Credits</div>
+    <h2>Music by Ping</h2>
+    <div class="lead"><p>The intro music for the Angels’ Wing weekend chat was kindly provided by <strong>Ping</strong>, a musician from Portland, Oregon. Ping’s inspiration comes from lofi hip hop, boom bap, vaporwave and future funk, and aims to paint nostalgic scenes from days gone by. The loop is part of the song “When the Sun Sets”. It is available on <a href="https://youtu.be/cvHTc8jpTnw" target="_blank" rel="noopener noreferrer">YouTube</a>, <a href="https://pingmusic005.bandcamp.com/album/when-the-sun-sets-single" target="_blank" rel="noopener noreferrer">Bandcamp</a> and all major streaming platforms.</p></div>
+    <div class="roster">Aly · Andrea · AOKO Studio &amp; All Very Goods · Arjen Roos · Caroline Harroe · Deva · dila · Dionne · Eislyn · Elaine · Ethspresso · HAL · jacknetic · Joy Jo · jprittee · lorr.eth X masonNFT.eth · Mallovv · Maya · Ma’ayan (Mush) · Montalut · Nadia · Olaf + Johannes Hoppe · Pippo · playgrdstar · Simran · Studio Sylvo · Tan Chiang Kiong · Thari · Unickate · Vow · Wolf Ram · Yoko · Yune Wild</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div class="copy">
+      Copyright &copy; 2022–2023 The Angels' Wing. All rights to the artwork remain solely with the artists.<br>
+      Supported by <a href="https://haushoppe.art" target="_blank" rel="noopener noreferrer">HAUS HOPPE</a>.
+    </div>
+    <div class="social">
+      <a href="https://twitter.com/TheAngelsWing" target="_blank" rel="noopener noreferrer">Twitter</a>
+      <a href="https://discord.gg/F25NEDuyEb" target="_blank" rel="noopener noreferrer">Discord</a>
+      <a href="https://www.youtube.com/channel/UCGjuRanv1h5jx75aNqZJ-Qw" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://feed.theangelswing.art/">Podcast</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
